@@ -1,0 +1,6 @@
+# Extra packages for running the pipeline on Google Colab (Colab already provides CUDA PyTorch).
+tensorboard>=2.15
+pyyaml>=6.0
+matplotlib>=3.8
+scipy>=1.10  # reads the Flowers-102 labels during the not-food check download
+scikit-learn>=1.3  # t-SNE feature map in the analysis stage

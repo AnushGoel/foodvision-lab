@@ -1,0 +1,114 @@
+{
+  "model": "effnetb4",
+  "epochs": 30,
+  "entries": [
+    {
+      "view": "00_pizza_as_sushi_view.jpg",
+      "cam": "00_pizza_as_sushi_cam.jpg",
+      "label": "pizza",
+      "prediction": "sushi",
+      "confidence": 0.8499331198274094,
+      "correct": false,
+      "kind": "misclassified"
+    },
+    {
+      "view": "01_steak_as_sushi_view.jpg",
+      "cam": "01_steak_as_sushi_cam.jpg",
+      "label": "steak",
+      "prediction": "sushi",
+      "confidence": 0.7238069480475909,
+      "correct": false,
+      "kind": "misclassified"
+    },
+    {
+      "view": "02_steak_as_pizza_view.jpg",
+      "cam": "02_steak_as_pizza_cam.jpg",
+      "label": "steak",
+      "prediction": "pizza",
+      "confidence": 0.7260790895123633,
+      "correct": false,
+      "kind": "misclassified"
+    },
+    {
+      "view": "03_sushi_as_pizza_view.jpg",
+      "cam": "03_sushi_as_pizza_cam.jpg",
+      "label": "sushi",
+      "prediction": "pizza",
+      "confidence": 0.5362751331989489,
+      "correct": false,
+      "kind": "misclassified"
+    },
+    {
+      "view": "04_sushi_as_steak_view.jpg",
+      "cam": "04_sushi_as_steak_cam.jpg",
+      "label": "sushi",
+      "prediction": "steak",
+      "confidence": 0.5295272415433233,
+      "correct": false,
+      "kind": "misclassified"
+    },
+    {
+      "view": "05_sushi_as_pizza_view.jpg",
+      "cam": "05_sushi_as_pizza_cam.jpg",
+      "label": "sushi",
+      "prediction": "pizza",
+      "confidence": 0.5592889186806592,
+      "correct": false,
+      "kind": "misclassified"
+    },
+    {
+      "view": "06_pizza_as_pizza_view.jpg",
+      "cam": "06_pizza_as_pizza_cam.jpg",
+      "label": "pizza",
+      "prediction": "pizza",
+      "confidence": 0.9999997942154116,
+      "correct": true,
+      "kind": "most confident"
+    },
+    {
+      "view": "07_steak_as_steak_view.jpg",
+      "cam": "07_steak_as_steak_cam.jpg",
+      "label": "steak",
+      "prediction": "steak",
+      "confidence": 0.9999937679813566,
+      "correct": true,
+      "kind": "most confident"
+    },
+    {
+      "view": "08_sushi_as_sushi_view.jpg",
+      "cam": "08_sushi_as_sushi_cam.jpg",
+      "label": "sushi",
+      "prediction": "sushi",
+      "confidence": 0.9999858995792644,
+      "correct": true,
+      "kind": "most confident"
+    },
+    {
+      "view": "09_pizza_as_pizza_view.jpg",
+      "cam": "09_pizza_as_pizza_cam.jpg",
+      "label": "pizza",
+      "prediction": "pizza",
+      "confidence": 0.5260150783152998,
+      "correct": true,
+      "kind": "least confident"
+    },
+    {
+      "view": "10_sushi_as_sushi_view.jpg",
+      "cam": "10_sushi_as_sushi_cam.jpg",
+      "label": "sushi",
+      "prediction": "sushi",
+      "confidence": 0.535592943810667,
+      "correct": true,
+      "kind": "least confident"
+    },
+    {
+      "view": "11_sushi_as_sushi_view.jpg",
+      "cam": "11_sushi_as_sushi_cam.jpg",
+      "label": "sushi",
+      "prediction": "sushi",
+      "confidence": 0.5476766857206526,
+      "correct": true,
+      "kind": "least confident"
+    }
+  ]
+}

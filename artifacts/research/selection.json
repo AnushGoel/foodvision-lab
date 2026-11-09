@@ -1,0 +1,99 @@
+{
+  "rule": "highest mean validation accuracy over seeds; ties: lower validation loss, fewer parameters, fewer epochs",
+  "model": "effnetb4",
+  "label": "EfficientNet-B4",
+  "epochs": 30,
+  "split": {
+    "train": 360,
+    "validation": 90,
+    "test": 150
+  },
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "table": [
+    {
+      "model": "effnetb4",
+      "epochs": 30,
+      "val_acc_mean": 0.974074074074074,
+      "val_acc_sd": 0.006415002990995812,
+      "val_loss_mean": 0.24628159900506338,
+      "val_macro_f1_mean": 0.9736404243858762,
+      "total_params": 17553995
+    },
+    {
+      "model": "effnetb4",
+      "epochs": 20,
+      "val_acc_mean": 0.974074074074074,
+      "val_acc_sd": 0.006415002990995835,
+      "val_loss_mean": 0.3073852260907491,
+      "val_macro_f1_mean": 0.9736394917214497,
+      "total_params": 17553995
+    },
+    {
+      "model": "effnetb3",
+      "epochs": 15,
+      "val_acc_mean": 0.9703703703703703,
+      "val_acc_sd": 0.006415002990995835,
+      "val_loss_mean": 0.2110707958539327,
+      "val_macro_f1_mean": 0.9700561949951951,
+      "total_params": 10700843
+    },
+    {
+      "model": "effnetb3",
+      "epochs": 20,
+      "val_acc_mean": 0.9666666666666667,
+      "val_acc_sd": 0.0,
+      "val_loss_mean": 0.19252481063206991,
+      "val_macro_f1_mean": 0.9662389713045173,
+      "total_params": 10700843
+    },
+    {
+      "model": "effnetb4",
+      "epochs": 15,
+      "val_acc_mean": 0.9666666666666667,
+      "val_acc_sd": 0.011111111111111072,
+      "val_loss_mean": 0.3543897271156311,
+      "val_macro_f1_mean": 0.9666934691106205,
+      "total_params": 17553995
+    },
+    {
+      "model": "effnetb3",
+      "epochs": 30,
+      "val_acc_mean": 0.9592592592592593,
+      "val_acc_sd": 0.006415002990995812,
+      "val_loss_mean": 0.1635066121816635,
+      "val_macro_f1_mean": 0.958592350198017,
+      "total_params": 10700843
+    },
+    {
+      "model": "effnetb2",
+      "epochs": 15,
+      "val_acc_mean": 0.9333333333333332,
+      "val_acc_sd": 0.0,
+      "val_loss_mean": 0.2301231473684311,
+      "val_macro_f1_mean": 0.9336002980070776,
+      "total_params": 7705221
+    },
+    {
+      "model": "effnetb2",
+      "epochs": 30,
+      "val_acc_mean": 0.9296296296296296,
+      "val_acc_sd": 0.006415002990995812,
+      "val_loss_mean": 0.18664099276065826,
+      "val_macro_f1_mean": 0.9300331787181583,
+      "total_params": 7705221
+    },
+    {
+      "model": "effnetb2",
+      "epochs": 20,
+      "val_acc_mean": 0.9296296296296296,
+      "val_acc_sd": 0.006415002990995812,
+      "val_loss_mean": 0.21814463039239249,
+      "val_macro_f1_mean": 0.9293620662049404,
+      "total_params": 7705221
+    }
+  ]
+}

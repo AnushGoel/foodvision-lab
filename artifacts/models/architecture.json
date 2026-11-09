@@ -1,0 +1,389 @@
+[
+  {
+    "name": "effnetb2",
+    "label": "EfficientNet-B2",
+    "weights": "IMAGENET1K_V1",
+    "resize": 288,
+    "crop": 288,
+    "interpolation": "bicubic",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "mbconv_blocks": 23,
+    "feature_dim": 1408,
+    "dropout": 0.3,
+    "params_imagenet_head": 9109994,
+    "params": {
+      "total": 7705221,
+      "trainable": 4227
+    },
+    "imagenet_top1": 80.608,
+    "gflops": 1.088,
+    "stages": [
+      {
+        "stage": 0,
+        "kind": "stem",
+        "blocks": 1,
+        "output": [
+          32,
+          144,
+          144
+        ],
+        "params": 928
+      },
+      {
+        "stage": 1,
+        "kind": "MBConv stage",
+        "blocks": 2,
+        "output": [
+          16,
+          144,
+          144
+        ],
+        "params": 2060
+      },
+      {
+        "stage": 2,
+        "kind": "MBConv stage",
+        "blocks": 3,
+        "output": [
+          24,
+          72,
+          72
+        ],
+        "params": 27424
+      },
+      {
+        "stage": 3,
+        "kind": "MBConv stage",
+        "blocks": 3,
+        "output": [
+          48,
+          36,
+          36
+        ],
+        "params": 103134
+      },
+      {
+        "stage": 4,
+        "kind": "MBConv stage",
+        "blocks": 4,
+        "output": [
+          88,
+          18,
+          18
+        ],
+        "params": 421550
+      },
+      {
+        "stage": 5,
+        "kind": "MBConv stage",
+        "blocks": 4,
+        "output": [
+          120,
+          18,
+          18
+        ],
+        "params": 862768
+      },
+      {
+        "stage": 6,
+        "kind": "MBConv stage",
+        "blocks": 5,
+        "output": [
+          208,
+          9,
+          9
+        ],
+        "params": 3048878
+      },
+      {
+        "stage": 7,
+        "kind": "MBConv stage",
+        "blocks": 2,
+        "output": [
+          352,
+          9,
+          9
+        ],
+        "params": 2735820
+      },
+      {
+        "stage": 8,
+        "kind": "head conv",
+        "blocks": 1,
+        "output": [
+          1408,
+          9,
+          9
+        ],
+        "params": 498432
+      }
+    ]
+  },
+  {
+    "name": "effnetb3",
+    "label": "EfficientNet-B3",
+    "weights": "IMAGENET1K_V1",
+    "resize": 320,
+    "crop": 300,
+    "interpolation": "bicubic",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "mbconv_blocks": 26,
+    "feature_dim": 1536,
+    "dropout": 0.3,
+    "params_imagenet_head": 12233232,
+    "params": {
+      "total": 10700843,
+      "trainable": 4611
+    },
+    "imagenet_top1": 82.008,
+    "gflops": 1.827,
+    "stages": [
+      {
+        "stage": 0,
+        "kind": "stem",
+        "blocks": 1,
+        "output": [
+          40,
+          150,
+          150
+        ],
+        "params": 1160
+      },
+      {
+        "stage": 1,
+        "kind": "MBConv stage",
+        "blocks": 2,
+        "output": [
+          24,
+          150,
+          150
+        ],
+        "params": 3504
+      },
+      {
+        "stage": 2,
+        "kind": "MBConv stage",
+        "blocks": 3,
+        "output": [
+          32,
+          75,
+          75
+        ],
+        "params": 48118
+      },
+      {
+        "stage": 3,
+        "kind": "MBConv stage",
+        "blocks": 3,
+        "output": [
+          48,
+          38,
+          38
+        ],
+        "params": 110912
+      },
+      {
+        "stage": 4,
+        "kind": "MBConv stage",
+        "blocks": 5,
+        "output": [
+          96,
+          19,
+          19
+        ],
+        "params": 638700
+      },
+      {
+        "stage": 5,
+        "kind": "MBConv stage",
+        "blocks": 5,
+        "output": [
+          136,
+          19,
+          19
+        ],
+        "params": 1387760
+      },
+      {
+        "stage": 6,
+        "kind": "MBConv stage",
+        "blocks": 6,
+        "output": [
+          232,
+          10,
+          10
+        ],
+        "params": 4628964
+      },
+      {
+        "stage": 7,
+        "kind": "MBConv stage",
+        "blocks": 2,
+        "output": [
+          384,
+          10,
+          10
+        ],
+        "params": 3284218
+      },
+      {
+        "stage": 8,
+        "kind": "head conv",
+        "blocks": 1,
+        "output": [
+          1536,
+          10,
+          10
+        ],
+        "params": 592896
+      }
+    ]
+  },
+  {
+    "name": "effnetb4",
+    "label": "EfficientNet-B4",
+    "weights": "IMAGENET1K_V1",
+    "resize": 384,
+    "crop": 380,
+    "interpolation": "bicubic",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "mbconv_blocks": 32,
+    "feature_dim": 1792,
+    "dropout": 0.4,
+    "params_imagenet_head": 19341616,
+    "params": {
+      "total": 17553995,
+      "trainable": 5379
+    },
+    "imagenet_top1": 83.384,
+    "gflops": 4.394,
+    "stages": [
+      {
+        "stage": 0,
+        "kind": "stem",
+        "blocks": 1,
+        "output": [
+          48,
+          190,
+          190
+        ],
+        "params": 1392
+      },
+      {
+        "stage": 1,
+        "kind": "MBConv stage",
+        "blocks": 2,
+        "output": [
+          24,
+          190,
+          190
+        ],
+        "params": 4146
+      },
+      {
+        "stage": 2,
+        "kind": "MBConv stage",
+        "blocks": 4,
+        "output": [
+          32,
+          95,
+          95
+        ],
+        "params": 66238
+      },
+      {
+        "stage": 3,
+        "kind": "MBConv stage",
+        "blocks": 4,
+        "output": [
+          56,
+          48,
+          48
+        ],
+        "params": 197586
+      },
+      {
+        "stage": 4,
+        "kind": "MBConv stage",
+        "blocks": 6,
+        "output": [
+          112,
+          24,
+          24
+        ],
+        "params": 1059898
+      },
+      {
+        "stage": 5,
+        "kind": "MBConv stage",
+        "blocks": 6,
+        "output": [
+          160,
+          24,
+          24
+        ],
+        "params": 2306724
+      },
+      {
+        "stage": 6,
+        "kind": "MBConv stage",
+        "blocks": 8,
+        "output": [
+          272,
+          12,
+          12
+        ],
+        "params": 8636228
+      },
+      {
+        "stage": 7,
+        "kind": "MBConv stage",
+        "blocks": 2,
+        "output": [
+          448,
+          12,
+          12
+        ],
+        "params": 4470004
+      },
+      {
+        "stage": 8,
+        "kind": "head conv",
+        "blocks": 1,
+        "output": [
+          1792,
+          12,
+          12
+        ],
+        "params": 806400
+      }
+    ]
+  }
+]

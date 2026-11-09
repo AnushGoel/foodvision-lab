@@ -1,0 +1,364 @@
+{
+  "schema_version": 1,
+  "stages": {
+    "audit": {
+      "fingerprint": "669b79008ef6",
+      "completed_at": "2026-11-09T01:18:28+00:00",
+      "seconds": 4.0
+    },
+    "assignment": {
+      "fingerprint": "136cb7c82460",
+      "completed_at": "2026-11-09T01:26:50+00:00",
+      "seconds": 501.4
+    },
+    "research": {
+      "fingerprint": "8e3787148884",
+      "completed_at": "2026-11-09T01:38:22+00:00",
+      "seconds": 691.9
+    },
+    "analysis": {
+      "fingerprint": "355347bdda15",
+      "completed_at": "2026-11-09T01:42:35+00:00",
+      "seconds": 253.0
+    },
+    "benchmark": {
+      "fingerprint": "f448cf7c7541",
+      "completed_at": "2026-11-09T01:42:45+00:00",
+      "seconds": 9.7
+    }
+  },
+  "updated_at": "2026-11-09T01:42:45+00:00",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA L4",
+    "cpu_count": 12,
+    "foodvision": "1.0.0"
+  },
+  "config": {
+    "seed": 42,
+    "models": [
+      "effnetb2",
+      "effnetb3",
+      "effnetb4"
+    ],
+    "epochs": [
+      15,
+      20,
+      30
+    ],
+    "data": {
+      "name": "pizza_steak_sushi_20_percent",
+      "root": "data",
+      "val_fraction": 0.2,
+      "urls": [
+        "https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi_20_percent.zip",
+        "https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/data/pizza_steak_sushi_20_percent.zip"
+      ]
+    },
+    "train": {
+      "batch_size": 32,
+      "learning_rate": 0.001,
+      "drop_last": false,
+      "freeze_bn_stats": false
+    },
+    "research": {
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "bn_ablation": true
+    },
+    "evaluation": {
+      "bootstrap_resamples": 10000,
+      "calibration_bins": 10,
+      "gallery_size": 12,
+      "latency_runs": 30,
+      "export_gallery": true
+    },
+    "ood": {
+      "enabled": true,
+      "sources": [
+        "flowers102",
+        "oxford_pets"
+      ],
+      "per_source": 200,
+      "target_tpr": 0.95
+    },
+    "analysis": {
+      "fractions": [
+        0.1,
+        0.25,
+        0.5,
+        1.0
+      ],
+      "perplexity": 30
+    },
+    "paths": {
+      "runs": "runs",
+      "artifacts": "artifacts",
+      "checkpoints": "checkpoints"
+    }
+  },
+  "files": [
+    {
+      "file": "README.md",
+      "bytes": 1311,
+      "sha256": "1eb63f88242f9277"
+    },
+    {
+      "file": "analysis/data_efficiency.csv",
+      "bytes": 801,
+      "sha256": "43f57b3a55671bdc"
+    },
+    {
+      "file": "analysis/feature_map.csv",
+      "bytes": 26522,
+      "sha256": "c199e9c0d64937c1"
+    },
+    {
+      "file": "analysis/robustness.csv",
+      "bytes": 1876,
+      "sha256": "96b792792f3730ac"
+    },
+    {
+      "file": "analysis/summary.json",
+      "bytes": 1546,
+      "sha256": "bede868fa8e3a72a"
+    },
+    {
+      "file": "assignment/histories.json",
+      "bytes": 27400,
+      "sha256": "e0e9c8059ccc2cca"
+    },
+    {
+      "file": "assignment/summary.csv",
+      "bytes": 1833,
+      "sha256": "8afb923334c2772b"
+    },
+    {
+      "file": "data/audit.json",
+      "bytes": 985,
+      "sha256": "87f437d0f57644b0"
+    },
+    {
+      "file": "data/images.csv",
+      "bytes": 77132,
+      "sha256": "4e1505c533408ece"
+    },
+    {
+      "file": "figures/summary.png",
+      "bytes": 295858,
+      "sha256": "edb543dbdeffb3ab"
+    },
+    {
+      "file": "gallery/00_pizza_as_sushi_cam.jpg",
+      "bytes": 18647,
+      "sha256": "de1d8cf417b2ab9f"
+    },
+    {
+      "file": "gallery/00_pizza_as_sushi_view.jpg",
+      "bytes": 25406,
+      "sha256": "0cef02dd2aafbc07"
+    },
+    {
+      "file": "gallery/01_steak_as_sushi_cam.jpg",
+      "bytes": 14307,
+      "sha256": "f25313405873e3e0"
+    },
+    {
+      "file": "gallery/01_steak_as_sushi_view.jpg",
+      "bytes": 19384,
+      "sha256": "d2d6bfb6eca99ce2"
+    },
+    {
+      "file": "gallery/02_steak_as_pizza_cam.jpg",
+      "bytes": 13961,
+      "sha256": "0268e38564e32df6"
+    },
+    {
+      "file": "gallery/02_steak_as_pizza_view.jpg",
+      "bytes": 17931,
+      "sha256": "58272801e25f4c16"
+    },
+    {
+      "file": "gallery/03_sushi_as_pizza_cam.jpg",
+      "bytes": 22035,
+      "sha256": "5b8648e98d0119bf"
+    },
+    {
+      "file": "gallery/03_sushi_as_pizza_view.jpg",
+      "bytes": 28818,
+      "sha256": "b060dc5e0bfd932e"
+    },
+    {
+      "file": "gallery/04_sushi_as_steak_cam.jpg",
+      "bytes": 10953,
+      "sha256": "d1f0897654e61c0e"
+    },
+    {
+      "file": "gallery/04_sushi_as_steak_view.jpg",
+      "bytes": 14655,
+      "sha256": "3b7b819afc696342"
+    },
+    {
+      "file": "gallery/05_sushi_as_pizza_cam.jpg",
+      "bytes": 12269,
+      "sha256": "91485a2c5837ad7e"
+    },
+    {
+      "file": "gallery/05_sushi_as_pizza_view.jpg",
+      "bytes": 14135,
+      "sha256": "e34f9bf015271534"
+    },
+    {
+      "file": "gallery/06_pizza_as_pizza_cam.jpg",
+      "bytes": 13962,
+      "sha256": "5150e904bc9f9001"
+    },
+    {
+      "file": "gallery/06_pizza_as_pizza_view.jpg",
+      "bytes": 18262,
+      "sha256": "0194560086fce74c"
+    },
+    {
+      "file": "gallery/07_steak_as_steak_cam.jpg",
+      "bytes": 11704,
+      "sha256": "0cab6511d57bee3d"
+    },
+    {
+      "file": "gallery/07_steak_as_steak_view.jpg",
+      "bytes": 15677,
+      "sha256": "7335e603b4c513a0"
+    },
+    {
+      "file": "gallery/08_sushi_as_sushi_cam.jpg",
+      "bytes": 9803,
+      "sha256": "0f91b931eccba6a0"
+    },
+    {
+      "file": "gallery/08_sushi_as_sushi_view.jpg",
+      "bytes": 12596,
+      "sha256": "22a03baaaeb88805"
+    },
+    {
+      "file": "gallery/09_pizza_as_pizza_cam.jpg",
+      "bytes": 15165,
+      "sha256": "5df5ff7a9b894c50"
+    },
+    {
+      "file": "gallery/09_pizza_as_pizza_view.jpg",
+      "bytes": 19730,
+      "sha256": "e9892ca5e1a45514"
+    },
+    {
+      "file": "gallery/10_sushi_as_sushi_cam.jpg",
+      "bytes": 14722,
+      "sha256": "50e0a6fd06ce43d6"
+    },
+    {
+      "file": "gallery/10_sushi_as_sushi_view.jpg",
+      "bytes": 19440,
+      "sha256": "31dd1b65b92afe22"
+    },
+    {
+      "file": "gallery/11_sushi_as_sushi_cam.jpg",
+      "bytes": 14939,
+      "sha256": "de8214afc980d310"
+    },
+    {
+      "file": "gallery/11_sushi_as_sushi_view.jpg",
+      "bytes": 20029,
+      "sha256": "f7d901f96580a9df"
+    },
+    {
+      "file": "gallery/index.json",
+      "bytes": 3014,
+      "sha256": "6935d04f15a69f90"
+    },
+    {
+      "file": "model/foodvision.pt",
+      "bytes": 612851,
+      "sha256": "b678294208f2814a"
+    },
+    {
+      "file": "model/model_meta.json",
+      "bytes": 1275,
+      "sha256": "177880b0b7292901"
+    },
+    {
+      "file": "models/architecture.json",
+      "bytes": 6630,
+      "sha256": "a0f6e93ae98c1c76"
+    },
+    {
+      "file": "models/benchmark.json",
+      "bytes": 1060,
+      "sha256": "ea3133b295c25d97"
+    },
+    {
+      "file": "reports/DATA_AUDIT.md",
+      "bytes": 577,
+      "sha256": "fc7a0ef9d336f0b2"
+    },
+    {
+      "file": "reports/EXPERIMENTS.md",
+      "bytes": 5794,
+      "sha256": "29c136e5c321ca31"
+    },
+    {
+      "file": "reports/MODEL_CARD.md",
+      "bytes": 5449,
+      "sha256": "beb347cc1903cc62"
+    },
+    {
+      "file": "research/bn_ablation.csv",
+      "bytes": 1096,
+      "sha256": "7fe66b60586e667b"
+    },
+    {
+      "file": "research/calibration.json",
+      "bytes": 3376,
+      "sha256": "81b3ee0ad7906613"
+    },
+    {
+      "file": "research/histories.json",
+      "bytes": 38487,
+      "sha256": "2a71c60a0c21d590"
+    },
+    {
+      "file": "research/ood.json",
+      "bytes": 2442,
+      "sha256": "d52b819994bc25c6"
+    },
+    {
+      "file": "research/ood_scores.csv",
+      "bytes": 51202,
+      "sha256": "b41459865e48d02d"
+    },
+    {
+      "file": "research/predictions_test.csv",
+      "bytes": 27074,
+      "sha256": "a28261052a7e038e"
+    },
+    {
+      "file": "research/selection.json",
+      "bytes": 2670,
+      "sha256": "d4deb0cb9200efc3"
+    },
+    {
+      "file": "research/test_report.json",
+      "bytes": 2764,
+      "sha256": "04544055a5d75fc8"
+    },
+    {
+      "file": "research/validation.csv",
+      "bytes": 2010,
+      "sha256": "512ffcc1b4b51fb4"
+    }
+  ]
+}

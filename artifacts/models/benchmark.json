@@ -1,0 +1,56 @@
+[
+  {
+    "model": "effnetb2",
+    "device": "cpu",
+    "input": 288,
+    "median_ms": 37.32629000012366,
+    "p90_ms": 48.765326299803746,
+    "threads": 6,
+    "runs": 30
+  },
+  {
+    "model": "effnetb2",
+    "device": "cuda",
+    "input": 288,
+    "median_ms": 13.041056500014747,
+    "p90_ms": 13.294879899922307,
+    "threads": 6,
+    "runs": 30
+  },
+  {
+    "model": "effnetb3",
+    "device": "cpu",
+    "input": 300,
+    "median_ms": 52.88883900004748,
+    "p90_ms": 54.18869820000509,
+    "threads": 6,
+    "runs": 30
+  },
+  {
+    "model": "effnetb3",
+    "device": "cuda",
+    "input": 300,
+    "median_ms": 14.478321000069627,
+    "p90_ms": 14.775246599924685,
+    "threads": 6,
+    "runs": 30
+  },
+  {
+    "model": "effnetb4",
+    "device": "cpu",
+    "input": 380,
+    "median_ms": 81.18887800014818,
+    "p90_ms": 83.97860529985337,
+    "threads": 6,
+    "runs": 30
+  },
+  {
+    "model": "effnetb4",
+    "device": "cuda",
+    "input": 380,
+    "median_ms": 17.63492799989308,
+    "p90_ms": 18.09644680006386,
+    "threads": 6,
+    "runs": 30
+  }
+]

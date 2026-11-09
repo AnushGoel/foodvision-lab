@@ -1,0 +1,52 @@
+{
+  "arch": "effnetb4",
+  "classes": [
+    "pizza",
+    "steak",
+    "sushi"
+  ],
+  "label": "EfficientNet-B4",
+  "weights": "IMAGENET1K_V1",
+  "epochs": 30,
+  "seed": 42,
+  "temperature": 0.4005036223644737,
+  "trained_on": "360 images (stratified training split)",
+  "metrics": {
+    "test_accuracy": 0.96,
+    "test_accuracy_wilson": [
+      0.915486535783444,
+      0.9815408393979256
+    ],
+    "test_macro_f1": 0.958804932347948,
+    "test_ece_uncalibrated": 0.13228863934683355,
+    "test_ece_scaled": 0.019718189912681264
+  },
+  "transforms": {
+    "resize": 384,
+    "crop": 380,
+    "interpolation": "bicubic"
+  },
+  "ood": {
+    "score": "max_logit",
+    "threshold": 0.5634582042694092,
+    "temperature": 0.4005036223644737,
+    "target_tpr": 0.95
+  },
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "torch": "2.14.1+cu130",
+    "torchvision": "0.29.1+cu130",
+    "cuda": "13.0",
+    "gpu": "NVIDIA L4",
+    "cpu_count": 12,
+    "foodvision": "1.0.0"
+  },
+  "config_fingerprint": "8e3787148884",
+  "created_at": "2026-11-09T01:38:22+00:00",
+  "file": {
+    "path": "artifacts/model/foodvision.pt",
+    "bytes": 612851,
+    "sha256": "b678294208f2814a081c65ee3ff480500f1bb0656a18bdd04fbfc6f397835102"
+  }
+}

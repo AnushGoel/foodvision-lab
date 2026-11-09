@@ -1,0 +1,129 @@
+{
+  "model": "effnetb4",
+  "label": "EfficientNet-B4",
+  "epochs": 30,
+  "seed": 42,
+  "n_test": 150,
+  "n_correct": 144,
+  "accuracy": 0.96,
+  "accuracy_wilson": [
+    0.915486535783444,
+    0.9815408393979256
+  ],
+  "accuracy_bootstrap": {
+    "estimate": 0.96,
+    "low": 0.9266666666666666,
+    "high": 0.9866666666666667,
+    "se": 0.0159851493459108
+  },
+  "macro_f1": 0.958804932347948,
+  "macro_f1_bootstrap": {
+    "estimate": 0.958804932347948,
+    "low": 0.9229003415066965,
+    "high": 0.9866664945306703,
+    "se": 0.016678902855639364
+  },
+  "weighted_f1": 0.9600135812383731,
+  "loss": 0.22509516775608063,
+  "per_class": [
+    {
+      "class": "pizza",
+      "precision": 0.9375,
+      "recall": 0.9782608695652174,
+      "f1": 0.9574468085106383,
+      "support": 46
+    },
+    {
+      "class": "steak",
+      "precision": 0.9824561403508771,
+      "recall": 0.9655172413793104,
+      "f1": 0.9739130434782608,
+      "support": 58
+    },
+    {
+      "class": "sushi",
+      "precision": 0.9555555555555556,
+      "recall": 0.9347826086956522,
+      "f1": 0.945054945054945,
+      "support": 46
+    }
+  ],
+  "confusion_matrix": [
+    [
+      45,
+      0,
+      1
+    ],
+    [
+      1,
+      56,
+      1
+    ],
+    [
+      2,
+      1,
+      43
+    ]
+  ],
+  "classes": [
+    "pizza",
+    "steak",
+    "sushi"
+  ],
+  "repeatability": [
+    {
+      "seed": 42,
+      "test_acc": 0.96,
+      "test_loss": 0.22509516775608063
+    },
+    {
+      "seed": 43,
+      "test_acc": 0.9733333333333334,
+      "test_loss": 0.21987754106521606
+    },
+    {
+      "seed": 44,
+      "test_acc": 0.9533333333333334,
+      "test_loss": 0.2255239337682724
+    }
+  ],
+  "comparisons": [
+    {
+      "model_a": "effnetb4",
+      "model_b": "effnetb2",
+      "epochs": 30,
+      "acc_a": 0.96,
+      "acc_b": 0.9533333333333334,
+      "a_only_correct": 6,
+      "b_only_correct": 5,
+      "discordant": 11,
+      "p_value": 1.0,
+      "difference": {
+        "estimate": 0.006666666666666599,
+        "low": -0.03333333333333344,
+        "high": 0.053333333333333344,
+        "se": 0.022027352793601334
+      },
+      "p_holm": 1.0
+    },
+    {
+      "model_a": "effnetb4",
+      "model_b": "effnetb3",
+      "epochs": 30,
+      "acc_a": 0.96,
+      "acc_b": 0.9666666666666667,
+      "a_only_correct": 4,
+      "b_only_correct": 5,
+      "discordant": 9,
+      "p_value": 1.0,
+      "difference": {
+        "estimate": -0.00666666666666671,
+        "low": -0.046666666666666745,
+        "high": 0.033333333333333326,
+        "se": 0.020067213779258002
+      },
+      "p_holm": 1.0
+    }
+  ],
+  "protocol_note": "Selected on validation data; first and only confirmatory use of the test set. Comparisons with other backbones were run after selection and are exploratory."
+}

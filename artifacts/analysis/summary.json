@@ -1,0 +1,66 @@
+{
+  "checkpoint_check": {
+    "reloaded_clean_accuracy": 0.96,
+    "reported_test_accuracy": 0.96,
+    "match": true
+  },
+  "robustness": {
+    "corruptions": {
+      "blur": {
+        "label": "Blur",
+        "levels": [
+          1.0,
+          2.0,
+          3.5
+        ],
+        "unit": "Gaussian radius, px"
+      },
+      "noise": {
+        "label": "Sensor noise",
+        "levels": [
+          0.04,
+          0.08,
+          0.16
+        ],
+        "unit": "noise SD on a 0-1 scale"
+      },
+      "dark": {
+        "label": "Low light",
+        "levels": [
+          0.6,
+          0.4,
+          0.25
+        ],
+        "unit": "brightness factor"
+      },
+      "jpeg": {
+        "label": "JPEG compression",
+        "levels": [
+          30,
+          15,
+          7
+        ],
+        "unit": "JPEG quality"
+      },
+      "lowres": {
+        "label": "Low resolution",
+        "levels": [
+          2,
+          4,
+          8
+        ],
+        "unit": "downscale factor"
+      }
+    },
+    "note": "Exploratory: corrupted copies of the test photos at the model's input size; no decision was made from these results."
+  },
+  "feature_map": {
+    "method": "L2-normalised pooled features, PCA to at most 50 dimensions, then t-SNE",
+    "perplexity": 30
+  },
+  "data_efficiency": {
+    "model": "effnetb4",
+    "epochs": 30,
+    "note": "Nested class-stratified subsets of the training split, scored on the validation split, with the same epochs and learning rate for every fraction; the 100% points are the research runs."
+  }
+}

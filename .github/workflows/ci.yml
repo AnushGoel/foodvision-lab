@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality-and-tests:
+    runs-on: ubuntu-24.04   # pinned, so the build environment only changes on purpose
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies (CPU-only PyTorch)
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+          pip install -e . --no-deps
+
+      - name: Lint (ruff)
+        run: ruff check .
+
+      - name: Formatting (ruff format)
+        run: ruff format --check .
+
+      - name: Type check (typed core modules)
+        run: >
+          mypy src/foodvision/config.py src/foodvision/stats.py src/foodvision/metrics.py
+          src/foodvision/calibration.py src/foodvision/artifacts.py src/foodvision/audit.py
+          src/foodvision/imageio.py src/foodvision/reports.py src/foodvision/ood.py
+
+      - name: Unit and app tests
+        run: pytest --cov --cov-report=term-missing
+
+      - name: App smoke test (server starts and reports healthy)
+        run: |
+          streamlit run streamlit_app.py --server.headless true --server.port 8599 &
+          for i in $(seq 1 30); do
+            curl --fail --silent http://localhost:8599/_stcore/health && exit 0
+            sleep 2
+          done
+          echo "Streamlit did not become healthy" && exit 1

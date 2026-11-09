@@ -1,0 +1,49 @@
+# FoodVision Lab experiment configuration. Changing a value changes the config fingerprint,
+# so cached results produced under a different configuration are never reused.
+seed: 42
+models: [effnetb2, effnetb3, effnetb4]   # fixed by the assignment
+epochs: [15, 20, 30]                     # fixed by the assignment
+
+data:
+  name: pizza_steak_sushi_20_percent
+  root: data
+  val_fraction: 0.2                      # research protocol: stratified split of the training images
+  urls:
+    - https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi_20_percent.zip
+    - https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/data/pizza_steak_sushi_20_percent.zip
+
+train:
+  batch_size: 32
+  learning_rate: 0.001
+  drop_last: false                       # the original notebook dropped the last 2 images every epoch
+  freeze_bn_stats: false                 # true = keep BatchNorm running statistics at their ImageNet values
+
+research:
+  seeds: [42, 43, 44]                    # repeatability study
+  bn_ablation: true                      # frozen vs. adapting BatchNorm statistics (validation only)
+
+evaluation:
+  bootstrap_resamples: 10000
+  calibration_bins: 10
+  gallery_size: 12
+  latency_runs: 30
+  export_gallery: true                   # Grad-CAM thumbnails of test images (see docs/DATASET_CARD.md)
+
+# Not-food check: public non-food photos (Flowers-102, Oxford-IIIT Pet; about 1.1 GB, downloaded once) are scored
+# to choose a rejection threshold on validation data and test it once. Only the scores are kept, never the images.
+ood:
+  enabled: true
+  sources: [flowers102, oxford_pets]
+  per_source: 200
+  target_tpr: 0.95
+
+# Analysis of the selected model: robustness to corrupted photos, a 2D feature map (t-SNE) and a data-efficiency curve
+# (training fractions; the 1.0 points reuse the research runs, so only smaller fractions are trained).
+analysis:
+  fractions: [0.1, 0.25, 0.5, 1.0]
+  perplexity: 30
+
+paths:
+  runs: runs
+  artifacts: artifacts
+  checkpoints: checkpoints

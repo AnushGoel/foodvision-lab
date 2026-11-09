@@ -1,0 +1,17 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9            # keep in sync with ruff==0.6.9 in requirements-dev.txt
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: end-of-file-fixer
+        exclude: ^artifacts/   # generated results keep the exact bytes recorded in artifacts/manifest.json
+      - id: trailing-whitespace
+        exclude: ^artifacts/
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ["--maxkb=2000"]   # model checkpoints belong in artifacts/ as small deltas, never full weights

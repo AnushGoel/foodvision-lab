@@ -1,0 +1,12 @@
+# Runtime for the Streamlit app (Streamlit Community Cloud installs this file).
+# CPU-only PyTorch wheels keep the deployment small; training runs on Colab with its own CUDA build.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.2,<3
+torchvision>=0.17,<1
+streamlit>=1.40,<2
+plotly>=5.20,<7
+pandas>=2.0
+numpy>=1.24
+pillow>=10.0
+matplotlib>=3.8
+pyyaml>=6.0

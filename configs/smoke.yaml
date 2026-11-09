@@ -1,0 +1,48 @@
+# Two-minute end-to-end check of the whole pipeline (one model, tiny budgets). Not for reporting.
+seed: 42
+models: [effnetb2]
+epochs: [1, 2]
+
+data:
+  name: pizza_steak_sushi_20_percent
+  root: data
+  val_fraction: 0.2
+  urls:
+    - https://github.com/mrdbourke/pytorch-deep-learning/raw/main/data/pizza_steak_sushi_20_percent.zip
+    - https://raw.githubusercontent.com/mrdbourke/pytorch-deep-learning/main/data/pizza_steak_sushi_20_percent.zip
+
+train:
+  batch_size: 32
+  learning_rate: 0.001
+  drop_last: false
+  freeze_bn_stats: false
+
+research:
+  seeds: [42]
+  bn_ablation: false
+
+evaluation:
+  bootstrap_resamples: 200
+  calibration_bins: 10
+  gallery_size: 3
+  latency_runs: 3
+  export_gallery: true
+
+# Not-food check: public non-food photos (Flowers-102, Oxford-IIIT Pet; about 1.1 GB, downloaded once) are scored
+# to choose a rejection threshold on validation data and test it once. Only the scores are kept, never the images.
+ood:
+  enabled: true
+  sources: [flowers102, oxford_pets]
+  per_source: 20
+  target_tpr: 0.95
+
+# Analysis of the selected model: robustness to corrupted photos, a 2D feature map (t-SNE) and a data-efficiency curve
+# (training fractions; the 1.0 points reuse the research runs, so only smaller fractions are trained).
+analysis:
+  fractions: [0.25, 1.0]
+  perplexity: 30
+
+paths:
+  runs: smoke_runs
+  artifacts: smoke_artifacts
+  checkpoints: smoke_checkpoints

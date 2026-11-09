@@ -1,0 +1,88 @@
+{
+  "status": "ok",
+  "score": "max_logit",
+  "score_label": "Maximum logit",
+  "temperature": 0.4005036223644737,
+  "target_tpr": 0.95,
+  "threshold": 0.5634582042694092,
+  "selection_rule": "highest validation AUROC; ties: lower validation FPR at the target TPR, then the simpler score",
+  "scores": [
+    {
+      "score": "msp",
+      "label": "Maximum softmax probability",
+      "val_auroc": 0.9122777777777777,
+      "val_fpr_at_tpr": 0.46,
+      "test_auroc": 0.9132666666666667,
+      "test_fpr_at_tpr": 0.61
+    },
+    {
+      "score": "max_logit",
+      "label": "Maximum logit",
+      "val_auroc": 0.915,
+      "val_fpr_at_tpr": 0.5,
+      "test_auroc": 0.9256666666666666,
+      "test_fpr_at_tpr": 0.49
+    },
+    {
+      "score": "energy",
+      "label": "Negative energy (log-sum-exp)",
+      "val_auroc": 0.9011111111111111,
+      "val_fpr_at_tpr": 0.59,
+      "test_auroc": 0.9149666666666667,
+      "test_fpr_at_tpr": 0.515
+    }
+  ],
+  "validation": {
+    "n_food": 90,
+    "n_non_food": 200,
+    "accepted_food": 0.9555555555555556,
+    "rejected_non_food": 0.5
+  },
+  "test": {
+    "n_food": 150,
+    "n_non_food": 200,
+    "auroc": {
+      "estimate": 0.9256666666666666,
+      "low": 0.8937325,
+      "high": 0.9522341666666667,
+      "level": 0.95,
+      "n_resamples": 10000
+    },
+    "fpr_at_tpr": 0.49,
+    "accepted_food": 0.9466666666666667,
+    "rejected_non_food": 0.56
+  },
+  "per_source": [
+    {
+      "source": "flowers102",
+      "label": "Flowers-102 (flowers)",
+      "n": 100,
+      "rejected": 0.37
+    },
+    {
+      "source": "oxford_pets",
+      "label": "Oxford-IIIT Pet (cats and dogs)",
+      "n": 100,
+      "rejected": 0.75
+    }
+  ],
+  "protocol_note": "Score and threshold chosen on validation images (food) and a validation sample of non-food photos; the test images of both kinds were used once. Only obvious non-food (flowers, pets) was tested, so other foods are not covered by these numbers.",
+  "sources": {
+    "flowers102": {
+      "label": "Flowers-102",
+      "content": "flowers",
+      "citation": "Nilsback & Zisserman, 2008",
+      "dataset": "Flowers102",
+      "pattern": "flowers-102/jpg/*.jpg",
+      "available": 8189
+    },
+    "oxford_pets": {
+      "label": "Oxford-IIIT Pet",
+      "content": "cats and dogs",
+      "citation": "Parkhi et al., 2012",
+      "dataset": "OxfordIIITPet",
+      "pattern": "oxford-iiit-pet/images/*.jpg",
+      "available": 7390
+    }
+  }
+}

@@ -1,0 +1,351 @@
+x,y,group,label,prediction,confidence,outcome,accepted_as_food
+-19.06094,-10.664909,food,pizza,pizza,0.9999969090012901,correct,True
+-8.315976,-10.709311,food,pizza,pizza,0.9912990669790236,correct,True
+-17.09575,-12.056734,food,pizza,pizza,0.9999997942154116,correct,True
+-19.860317,-7.965404,food,pizza,pizza,0.9940698057758459,correct,True
+-16.84104,-8.76014,food,pizza,pizza,0.9999057182289205,correct,True
+-17.353771,-7.721533,food,pizza,pizza,0.9934817223241852,correct,True
+-14.715168,-9.436531,food,pizza,pizza,0.9999997335781027,correct,True
+-20.296814,-10.80081,food,pizza,pizza,0.9999730605205245,correct,True
+-17.080927,-8.007993,food,pizza,pizza,0.998471807107454,correct,True
+-15.49245,-10.139178,food,pizza,pizza,0.9999919923817964,correct,True
+-13.052108,-8.655598,food,pizza,pizza,0.9989955347810929,correct,True
+-19.650475,-11.385734,food,pizza,pizza,0.9999903440275757,correct,True
+-12.731578,-10.747761,food,pizza,pizza,0.9999417176853453,correct,True
+-19.08492,-11.891371,food,pizza,pizza,0.9999971927727125,correct,True
+-16.054707,-12.285397,food,pizza,pizza,0.9993318118344,correct,True
+-16.812998,-9.455132,food,pizza,pizza,0.9996550149693685,correct,True
+-22.14163,-9.923961,food,pizza,pizza,0.999886053369257,correct,True
+-18.278303,-10.1134205,food,pizza,pizza,0.9997372230644985,correct,True
+-7.6800275,-10.931465,food,pizza,pizza,0.9982928304823396,correct,True
+-13.198235,-9.298331,food,pizza,pizza,0.9999570691816833,correct,True
+-17.083115,-10.911139,food,pizza,pizza,0.9999907968113307,correct,True
+-18.846575,-9.187686,food,pizza,pizza,0.9989605862267629,correct,True
+-6.2703543,-11.0649395,food,pizza,pizza,0.9529500097073216,correct,True
+14.703602,-13.056575,food,pizza,sushi,0.8499331198274094,misclassified,True
+-15.961557,-11.137484,food,pizza,pizza,0.999998690560371,correct,True
+-17.237028,-13.529024,food,pizza,pizza,0.9990435134676555,correct,True
+-16.732037,-11.45874,food,pizza,pizza,0.9999948812376976,correct,True
+-14.797957,-10.917315,food,pizza,pizza,0.9999997690194126,correct,True
+-20.030485,-12.75823,food,pizza,pizza,0.9998040641718516,correct,True
+-9.024902,-11.734179,food,pizza,pizza,0.999027165135065,correct,True
+-17.612873,-13.136373,food,pizza,pizza,0.9999959129605629,correct,True
+-6.6542172,-8.957588,food,pizza,pizza,0.828898299316898,correct,True
+-14.078115,-11.547136,food,pizza,pizza,0.9999929894591986,correct,True
+-8.52606,-10.337871,food,pizza,pizza,0.993519845805068,correct,True
+-13.216789,-8.0237,food,pizza,pizza,0.9946019717948155,correct,True
+-14.011733,-5.3057976,food,pizza,pizza,0.5260150783152998,correct,False
+-14.153543,-10.187753,food,pizza,pizza,0.9999996303258024,correct,True
+-21.015488,-7.344973,food,pizza,pizza,0.9788373849106601,correct,True
+-15.051481,-8.2638445,food,pizza,pizza,0.9942631384032226,correct,True
+-11.125062,-6.834903,food,pizza,pizza,0.9949220290280921,correct,True
+-12.033283,-10.111187,food,pizza,pizza,0.9998188906312089,correct,True
+-22.222961,-9.832592,food,pizza,pizza,0.9962126420108921,correct,True
+-6.236822,11.036858,food,pizza,pizza,0.9465753398240553,correct,True
+-16.440027,-5.678731,food,pizza,pizza,0.8812762149107104,correct,True
+-19.21502,-9.995708,food,pizza,pizza,0.9998260181222619,correct,True
+-7.0400167,-8.422946,food,pizza,pizza,0.9987001728630405,correct,True
+-18.897514,5.711746,food,steak,steak,0.9942079453700068,correct,True
+-13.209108,5.929924,food,steak,steak,0.9990480013187546,correct,True
+-13.485399,-1.9327303,food,steak,steak,0.9999937679813566,correct,True
+-18.400282,1.1234113,food,steak,steak,0.9988471931900377,correct,True
+-8.846071,-5.319328,food,steak,steak,0.8464965374444836,correct,True
+-17.9466,-0.18213475,food,steak,steak,0.9984797615157404,correct,True
+-13.733554,-3.129797,food,steak,steak,0.9375171241326055,correct,True
+-16.355663,-0.74916095,food,steak,steak,0.9949457086942187,correct,True
+-14.117331,3.0028496,food,steak,steak,0.9968405647868395,correct,True
+-7.66928,6.745113,food,steak,steak,0.5555452836950459,correct,True
+-12.183743,-3.2633598,food,steak,steak,0.9981900039766463,correct,True
+-18.09635,5.433952,food,steak,steak,0.9998468928263913,correct,True
+-11.751299,6.5884204,food,steak,steak,0.7388604401103601,correct,False
+-14.125958,1.57658,food,steak,steak,0.9999436857358864,correct,True
+-9.3939085,-4.7637544,food,steak,steak,0.7034872780453418,correct,True
+-14.766582,4.2325454,food,steak,steak,0.999643735584594,correct,True
+-10.910485,4.964387,food,steak,steak,0.9992894745572355,correct,True
+-16.367643,1.323952,food,steak,steak,0.9998374158879764,correct,True
+-11.862674,-5.241782,food,steak,steak,0.9913010674359275,correct,True
+-16.720459,6.1868896,food,steak,steak,0.9962325901086566,correct,True
+-16.900278,0.65148544,food,steak,steak,0.9999281486923597,correct,True
+-10.755655,-2.9822762,food,steak,steak,0.9644146715634879,correct,True
+-17.204622,6.002152,food,steak,steak,0.986078142771495,correct,True
+-15.006076,3.1180131,food,steak,steak,0.9998441079140743,correct,True
+-19.817528,2.6674442,food,steak,steak,0.9954176913610688,correct,True
+-13.093604,-0.9611935,food,steak,steak,0.9998602465237051,correct,True
+-20.767126,0.44066948,food,steak,steak,0.9489778797128978,correct,True
+-15.483131,-1.2519975,food,steak,steak,0.9863989785375251,correct,True
+-15.6962,2.9111397,food,steak,steak,0.9999119858439112,correct,True
+-18.508873,2.0390165,food,steak,steak,0.9995814954427067,correct,True
+-18.830996,1.5131373,food,steak,steak,0.9998325062588418,correct,True
+-18.479528,-0.83784324,food,steak,steak,0.9837849647093089,correct,True
+-17.999237,2.5158036,food,steak,steak,0.9999773292383602,correct,True
+-10.98558,-1.3652431,food,steak,steak,0.9011814570248358,correct,True
+-17.68936,-1.9102129,food,steak,steak,0.997795476594275,correct,True
+-13.477158,-0.9326017,food,steak,steak,0.9998562087274494,correct,True
+-11.442143,2.075143,food,steak,steak,0.9601561100223022,correct,True
+-12.384277,0.8598439,food,steak,steak,0.999975565098984,correct,True
+-14.229876,-0.3440548,food,steak,steak,0.9997320840372974,correct,True
+-3.0923035,3.819875,food,steak,sushi,0.7238069480475909,misclassified,False
+-16.22278,1.9465009,food,steak,steak,0.9996086447373717,correct,True
+-20.291826,-0.094919324,food,steak,pizza,0.7260790895123633,misclassified,False
+-17.2718,3.9884887,food,steak,steak,0.901379635543691,correct,True
+-15.188478,1.6363716,food,steak,steak,0.9999166333208228,correct,True
+-12.656413,4.508961,food,steak,steak,0.9848813566497318,correct,True
+-15.496871,5.288911,food,steak,steak,0.996714343456411,correct,True
+-11.184382,-5.4771924,food,steak,steak,0.8367285761717058,correct,True
+-11.979252,5.8540006,food,steak,steak,0.9886991873682289,correct,True
+-12.801955,2.1230931,food,steak,steak,0.9998176656936494,correct,True
+-2.6118712,10.981204,food,steak,steak,0.9462836152949765,correct,True
+-13.505495,4.5134664,food,steak,steak,0.9483543337962433,correct,True
+-19.450272,-1.6272436,food,steak,steak,0.918293316859381,correct,True
+-17.606924,3.6226778,food,steak,steak,0.9986768295985204,correct,True
+-15.710409,-3.089583,food,steak,steak,0.9763042616980767,correct,True
+-13.912748,2.1730354,food,steak,steak,0.9980387125026151,correct,True
+-12.725629,0.8851476,food,steak,steak,0.9999335618889703,correct,True
+-12.531359,5.162302,food,steak,steak,0.9873096035567099,correct,True
+-12.212224,-1.0262805,food,steak,steak,0.9976103923581393,correct,True
+-8.452465,1.2181748,food,sushi,sushi,0.9998904938100754,correct,True
+-9.09674,0.22308728,food,sushi,sushi,0.9929263533346332,correct,True
+-9.199801,5.6843424,food,sushi,sushi,0.9880477293995708,correct,True
+-6.0277967,-2.3905723,food,sushi,sushi,0.9988587909088725,correct,True
+-7.338708,-4.29519,food,sushi,sushi,0.9977337747048528,correct,True
+-6.0501547,-6.134033,food,sushi,sushi,0.9966288462196183,correct,True
+-8.58692,2.3115988,food,sushi,sushi,0.9407220506746489,correct,True
+-10.752119,-0.05985172,food,sushi,sushi,0.5939883011042547,correct,True
+-8.609175,3.750789,food,sushi,sushi,0.9954340438997028,correct,True
+-10.248819,3.204869,food,sushi,sushi,0.9944383901637311,correct,True
+-3.9189365,2.9562116,food,sushi,pizza,0.5362751331989489,misclassified,False
+-7.491339,0.66901445,food,sushi,sushi,0.9927494558387425,correct,True
+-2.367768,-2.7756114,food,sushi,sushi,0.9979821532575818,correct,True
+-7.918678,-1.2796724,food,sushi,sushi,0.879900825284643,correct,True
+-2.0719407,-8.594963,food,sushi,sushi,0.8147703090835674,correct,True
+-6.486462,2.790006,food,sushi,sushi,0.9800027916054547,correct,True
+-3.969923,-1.0345308,food,sushi,sushi,0.9998487431996003,correct,True
+-9.879684,-3.5822315,food,sushi,sushi,0.535592943810667,correct,True
+-4.534681,-0.23401316,food,sushi,sushi,0.9885111387710364,correct,True
+-7.5815296,-1.7811278,food,sushi,sushi,0.999015708735685,correct,True
+-3.1527505,-8.044041,food,sushi,sushi,0.9992096339889683,correct,True
+-3.3747392,-2.8201919,food,sushi,sushi,0.9999858995792644,correct,True
+-7.9569798,-3.7599723,food,sushi,sushi,0.9962896655459954,correct,True
+-5.2291436,-1.3552889,food,sushi,sushi,0.9267098922562361,correct,True
+-5.6309185,2.522388,food,sushi,sushi,0.7262200969478839,correct,True
+-10.402611,-6.2150087,food,sushi,sushi,0.9893076496233464,correct,True
+-2.2004395,-5.3044753,food,sushi,sushi,0.9880190276892413,correct,True
+-6.9702296,5.9849668,food,sushi,sushi,0.9988547211158192,correct,True
+-5.194466,-3.6863463,food,sushi,sushi,0.9998599678958342,correct,True
+-5.4159274,1.2072318,food,sushi,sushi,0.964567393965421,correct,True
+-8.063149,-3.27193,food,sushi,sushi,0.8497392578247924,correct,True
+-6.2332363,-6.8737416,food,sushi,sushi,0.9618164728621003,correct,True
+-5.6135883,-4.9981995,food,sushi,sushi,0.9489494086817946,correct,True
+-9.063756,1.1920686,food,sushi,sushi,0.9935334655490928,correct,True
+-1.9040223,-5.469124,food,sushi,sushi,0.997197041074755,correct,True
+-9.10124,-1.4000088,food,sushi,steak,0.5295272415433233,misclassified,True
+-2.7922785,0.79689705,food,sushi,sushi,0.9987083695569462,correct,True
+-3.0310555,-7.2796474,food,sushi,sushi,0.9995126199023443,correct,True
+-3.9749274,0.39182872,food,sushi,sushi,0.9987390988782682,correct,True
+-2.5468743,0.49906608,food,sushi,sushi,0.9953636435940216,correct,True
+-6.2296433,5.791653,food,sushi,sushi,0.5476766857206526,correct,False
+-9.252349,4.2586255,food,sushi,pizza,0.5592889186806592,misclassified,False
+-8.066986,5.865316,food,sushi,sushi,0.5965380108444795,correct,True
+-5.5918164,-5.4059916,food,sushi,sushi,0.8866340949526365,correct,True
+-5.208633,2.3491876,food,sushi,sushi,0.7021511796953458,correct,False
+-5.6190786,-2.6881616,food,sushi,sushi,0.9999353551847805,correct,True
+24.83801,-10.259783,non-food,flowers,pizza,0.3476314773616446,non-food,False
+26.62892,-8.389568,non-food,flowers,pizza,0.5659839371294542,non-food,False
+20.538315,-12.659502,non-food,flowers,sushi,0.7511046395057456,non-food,False
+23.903782,-8.983421,non-food,flowers,sushi,0.94271292269508,non-food,True
+26.604555,-4.790419,non-food,flowers,sushi,0.3879984649494134,non-food,False
+16.308884,-12.660427,non-food,flowers,sushi,0.955340808811554,non-food,True
+28.362387,-7.3856306,non-food,flowers,pizza,0.37066576674091706,non-food,False
+20.462955,-2.435599,non-food,flowers,sushi,0.723825156733559,non-food,True
+19.13493,-11.882391,non-food,flowers,sushi,0.9434765682474405,non-food,True
+29.361053,-6.5132966,non-food,flowers,steak,0.3820189564972214,non-food,False
+19.198112,-16.040281,non-food,flowers,sushi,0.8916587746452592,non-food,True
+25.177628,-6.4682074,non-food,flowers,sushi,0.465150996149584,non-food,False
+17.143894,-2.7649162,non-food,flowers,sushi,0.6855992752708929,non-food,True
+14.240125,-4.8724113,non-food,flowers,sushi,0.787485799970777,non-food,True
+23.110693,-1.1830721,non-food,flowers,sushi,0.75808829617771,non-food,True
+19.337055,-4.146112,non-food,flowers,sushi,0.5570351421248745,non-food,False
+11.689025,-7.5838284,non-food,flowers,sushi,0.7309951291021445,non-food,True
+12.681368,-7.3656855,non-food,flowers,sushi,0.5122227363633738,non-food,False
+17.552574,-6.412997,non-food,flowers,sushi,0.7789504529217752,non-food,True
+10.965264,-7.7075076,non-food,flowers,sushi,0.9691352235328415,non-food,True
+22.502338,-14.948236,non-food,flowers,sushi,0.9545876167212163,non-food,True
+27.912868,-7.8993216,non-food,flowers,pizza,0.41477529110283146,non-food,False
+25.7984,-7.781599,non-food,flowers,pizza,0.5805657985383471,non-food,False
+15.502805,-9.274294,non-food,flowers,pizza,0.6548128889338766,non-food,False
+18.70006,-6.150353,non-food,flowers,sushi,0.9950267644941125,non-food,True
+24.649593,-5.302895,non-food,flowers,sushi,0.7748096386890508,non-food,True
+26.09672,-6.413372,non-food,flowers,pizza,0.6247710600719392,non-food,False
+19.346848,-11.456056,non-food,flowers,sushi,0.8880480401978075,non-food,True
+20.863178,-12.402823,non-food,flowers,sushi,0.6961634931676816,non-food,False
+29.812325,-5.573589,non-food,flowers,steak,0.5623493315117807,non-food,False
+18.151114,-8.877366,non-food,flowers,sushi,0.9618695987515046,non-food,True
+17.357435,-9.714494,non-food,flowers,sushi,0.7184136937879387,non-food,True
+17.301073,-13.766731,non-food,flowers,sushi,0.9122659364153414,non-food,True
+20.916372,-6.6769,non-food,flowers,sushi,0.6006836966757123,non-food,False
+27.566277,-8.479631,non-food,flowers,sushi,0.5933902597710498,non-food,False
+19.912985,-13.404184,non-food,flowers,sushi,0.7976824323023896,non-food,True
+22.148796,-14.504879,non-food,flowers,sushi,0.962688152553018,non-food,True
+23.51196,-0.33240446,non-food,flowers,pizza,0.7066535427631384,non-food,True
+17.622303,-14.300388,non-food,flowers,sushi,0.9756318837094589,non-food,True
+26.401773,-3.4314036,non-food,flowers,sushi,0.5493771000052429,non-food,False
+16.129387,-10.112704,non-food,flowers,sushi,0.9022510371506639,non-food,True
+15.319596,-6.3822293,non-food,flowers,sushi,0.49953491863779265,non-food,False
+27.193699,-7.582847,non-food,flowers,pizza,0.4535671433399297,non-food,False
+19.671827,-6.905462,non-food,flowers,sushi,0.9127748876805678,non-food,True
+28.017843,-4.0537753,non-food,flowers,steak,0.6979848686330082,non-food,False
+23.807894,-5.466903,non-food,flowers,pizza,0.5429441416548062,non-food,False
+23.388735,-7.494178,non-food,flowers,sushi,0.6524667241819451,non-food,True
+20.857439,-15.122938,non-food,flowers,sushi,0.998397859416032,non-food,True
+20.159302,-4.882158,non-food,flowers,sushi,0.574629109633965,non-food,True
+25.04689,-9.141356,non-food,flowers,pizza,0.5990218372648419,non-food,False
+21.09223,-11.302749,non-food,flowers,sushi,0.9844339248188281,non-food,True
+20.597015,-5.6934605,non-food,flowers,sushi,0.8404917797093899,non-food,True
+21.270227,-13.065942,non-food,flowers,sushi,0.8448197171064057,non-food,True
+21.219532,-4.970017,non-food,flowers,sushi,0.91113620791379,non-food,True
+23.604166,-0.45572597,non-food,flowers,pizza,0.5638531332220984,non-food,False
+22.415373,-10.211973,non-food,flowers,sushi,0.5569634730961187,non-food,False
+20.310827,-8.460891,non-food,flowers,sushi,0.8494980872940378,non-food,True
+24.844004,-11.42723,non-food,flowers,sushi,0.5892824448985211,non-food,False
+15.964025,-5.008144,non-food,flowers,sushi,0.8683648816759897,non-food,True
+24.692709,-0.2921126,non-food,flowers,steak,0.45444748635755233,non-food,False
+26.259226,-5.504511,non-food,flowers,pizza,0.4200592521440439,non-food,False
+27.164064,-3.509615,non-food,flowers,sushi,0.3876335233929632,non-food,False
+21.008251,-14.533725,non-food,flowers,sushi,0.9664636717950668,non-food,True
+17.563839,-6.72597,non-food,flowers,sushi,0.9641817130804293,non-food,True
+17.384,-4.008948,non-food,flowers,sushi,0.8774595207875026,non-food,True
+13.085744,-9.667757,non-food,flowers,sushi,0.9538258380351069,non-food,True
+16.651278,-9.224335,non-food,flowers,sushi,0.8485696078882743,non-food,True
+18.841036,-13.654016,non-food,flowers,sushi,0.9623110562788548,non-food,True
+19.095955,-10.185403,non-food,flowers,sushi,0.8662406914734948,non-food,True
+22.992249,-7.101042,non-food,flowers,sushi,0.5767406427180516,non-food,False
+18.643261,-8.8931465,non-food,flowers,sushi,0.9512252662586282,non-food,True
+18.084337,-7.76996,non-food,flowers,sushi,0.7765177911727705,non-food,True
+21.44345,-9.4453,non-food,flowers,sushi,0.6299364551408279,non-food,False
+15.645175,-12.599622,non-food,flowers,sushi,0.5829715378178082,non-food,True
+16.98276,-5.399547,non-food,flowers,sushi,0.619852322629886,non-food,False
+29.38115,-6.049479,non-food,flowers,steak,0.5206511247002966,non-food,False
+23.436289,-12.492041,non-food,flowers,sushi,0.8999156064401133,non-food,True
+15.150234,-10.76136,non-food,flowers,sushi,0.9057150467084609,non-food,True
+16.440125,-8.051505,non-food,flowers,sushi,0.9500837946125337,non-food,True
+13.638349,-7.672033,non-food,flowers,sushi,0.6954751948288769,non-food,False
+16.884752,-2.6157367,non-food,flowers,pizza,0.5354477348167815,non-food,True
+18.48569,-10.7222805,non-food,flowers,sushi,0.8516885868412218,non-food,True
+22.31701,-10.499828,non-food,flowers,sushi,0.910724503158157,non-food,True
+20.605787,-10.07599,non-food,flowers,sushi,0.7948155132984314,non-food,True
+26.41697,-6.694919,non-food,flowers,sushi,0.41862396003642494,non-food,False
+25.1058,-7.576096,non-food,flowers,sushi,0.822225987696498,non-food,True
+23.697361,-6.640931,non-food,flowers,sushi,0.6095487800201229,non-food,False
+19.496687,-8.521837,non-food,flowers,sushi,0.9225943575670116,non-food,True
+19.024994,-15.82988,non-food,flowers,sushi,0.7959431895136847,non-food,True
+15.601351,-6.4801574,non-food,flowers,sushi,0.8135532158128929,non-food,True
+22.682293,-6.000341,non-food,flowers,sushi,0.913463777619513,non-food,True
+22.374935,-14.323857,non-food,flowers,sushi,0.9608746963317091,non-food,True
+16.782164,-11.178051,non-food,flowers,sushi,0.9727897376476955,non-food,True
+15.690312,-8.022779,non-food,flowers,sushi,0.985392772520101,non-food,True
+20.675472,-3.1885195,non-food,flowers,sushi,0.6632307405629513,non-food,True
+14.529498,-5.114157,non-food,flowers,pizza,0.5867111998593196,non-food,True
+21.902418,-2.789755,non-food,flowers,sushi,0.9312076202453906,non-food,True
+27.4995,-6.1152716,non-food,flowers,steak,0.4136755857929433,non-food,False
+17.143154,-11.946388,non-food,flowers,sushi,0.9729524298670457,non-food,True
+22.469337,-9.913644,non-food,flowers,sushi,0.8259406340215418,non-food,True
+-3.2670953,14.580824,non-food,cats and dogs,sushi,0.4741941838580439,non-food,False
+-2.8156219,22.978807,non-food,cats and dogs,sushi,0.7410266818221495,non-food,False
+7.787387,10.171752,non-food,cats and dogs,pizza,0.4699077098780051,non-food,False
+-2.641632,18.869347,non-food,cats and dogs,sushi,0.9261152506433691,non-food,True
+-5.0801935,17.05219,non-food,cats and dogs,pizza,0.6169053830548827,non-food,False
+4.4682097,8.08127,non-food,cats and dogs,pizza,0.4876391826068115,non-food,False
+-5.9023366,16.886526,non-food,cats and dogs,pizza,0.6791509118664102,non-food,False
+6.715192,8.040383,non-food,cats and dogs,pizza,0.9242819881670958,non-food,True
+-1.9955704,21.175413,non-food,cats and dogs,pizza,0.8898826552390485,non-food,True
+-2.3566875,24.135513,non-food,cats and dogs,sushi,0.5765821774099488,non-food,False
+0.42650184,7.9921308,non-food,cats and dogs,pizza,0.516539288216391,non-food,False
+-0.81451863,21.166504,non-food,cats and dogs,pizza,0.7848912987067611,non-food,True
+6.2075887,13.654137,non-food,cats and dogs,pizza,0.3929183726102355,non-food,False
+-4.8916698,16.48713,non-food,cats and dogs,sushi,0.4911859455605053,non-food,False
+-4.0153594,25.54596,non-food,cats and dogs,pizza,0.6555985057446693,non-food,False
+1.6608647,13.267594,non-food,cats and dogs,sushi,0.6422512130489557,non-food,False
+6.9939537,17.885603,non-food,cats and dogs,pizza,0.5348934360689498,non-food,False
+4.0441394,16.442356,non-food,cats and dogs,sushi,0.5691413711691755,non-food,False
+7.5808916,18.50693,non-food,cats and dogs,steak,0.4680837620469377,non-food,False
+-0.36100557,7.1253953,non-food,cats and dogs,sushi,0.49990240001943603,non-food,False
+7.0929403,8.761585,non-food,cats and dogs,pizza,0.5940927252184044,non-food,False
+0.271651,20.758404,non-food,cats and dogs,pizza,0.8407029851778046,non-food,True
+4.0782695,10.32144,non-food,cats and dogs,sushi,0.4842850798744329,non-food,False
+7.771656,16.62092,non-food,cats and dogs,steak,0.4484459239107969,non-food,False
+0.90765935,8.565522,non-food,cats and dogs,pizza,0.8134143798677221,non-food,True
+-3.9692538,23.070135,non-food,cats and dogs,sushi,0.5678487743466262,non-food,False
+-1.1452835,11.31213,non-food,cats and dogs,pizza,0.35085197977281646,non-food,False
+2.6302648,13.622768,non-food,cats and dogs,steak,0.6481951232457717,non-food,False
+3.1710346,15.723716,non-food,cats and dogs,pizza,0.7824250877456156,non-food,True
+7.6886325,8.53085,non-food,cats and dogs,pizza,0.5149772562053356,non-food,False
+6.375667,19.117538,non-food,cats and dogs,sushi,0.5247702349013879,non-food,False
+7.4847555,13.493568,non-food,cats and dogs,steak,0.6709470866006884,non-food,False
+0.022039222,11.379271,non-food,cats and dogs,pizza,0.6732678219224002,non-food,False
+9.354091,15.874056,non-food,cats and dogs,pizza,0.4667446989947544,non-food,False
+-4.8312397,21.221544,non-food,cats and dogs,pizza,0.8807289667641424,non-food,True
+7.249408,18.936588,non-food,cats and dogs,steak,0.47784835901639056,non-food,False
+0.16672133,11.940515,non-food,cats and dogs,sushi,0.6306685530051045,non-food,False
+-0.28740802,24.018446,non-food,cats and dogs,steak,0.7190907212676485,non-food,False
+3.3681307,8.447456,non-food,cats and dogs,pizza,0.9020751109189871,non-food,True
+-4.5244627,25.032955,non-food,cats and dogs,pizza,0.7880253964893887,non-food,True
+-1.2843871,20.418001,non-food,cats and dogs,pizza,0.8008300895478307,non-food,True
+10.228159,15.487317,non-food,cats and dogs,sushi,0.4761078550361166,non-food,False
+0.5741238,23.981806,non-food,cats and dogs,sushi,0.5183439448286336,non-food,False
+4.133226,15.845021,non-food,cats and dogs,pizza,0.4906136812738589,non-food,False
+-3.877546,21.358706,non-food,cats and dogs,pizza,0.5570405065291496,non-food,False
+-4.2268424,22.147055,non-food,cats and dogs,pizza,0.5384283663914481,non-food,False
+7.2502503,6.658516,non-food,cats and dogs,pizza,0.7858901414809948,non-food,True
+4.147779,9.571447,non-food,cats and dogs,sushi,0.7274822519945153,non-food,True
+-2.002034,22.475546,non-food,cats and dogs,pizza,0.6010630523024667,non-food,False
+5.8951025,19.559265,non-food,cats and dogs,sushi,0.7600138827843536,non-food,False
+-0.3060893,15.7705965,non-food,cats and dogs,pizza,0.40278576198147087,non-food,False
+-3.6166844,25.936804,non-food,cats and dogs,pizza,0.47544659699362785,non-food,False
+-5.7986445,17.21727,non-food,cats and dogs,pizza,0.8830728061282435,non-food,True
+-3.714368,26.458998,non-food,cats and dogs,sushi,0.5892056868732883,non-food,False
+-3.2374516,14.689813,non-food,cats and dogs,pizza,0.7537537068060585,non-food,False
+4.2884693,13.584002,non-food,cats and dogs,pizza,0.681688011916481,non-food,False
+-3.6496124,25.036898,non-food,cats and dogs,pizza,0.6484246422200808,non-food,False
+-0.3136552,21.865204,non-food,cats and dogs,pizza,0.7972459543599806,non-food,True
+6.641436,9.358372,non-food,cats and dogs,pizza,0.6234953557613213,non-food,False
+-0.057927884,15.513558,non-food,cats and dogs,pizza,0.46184831740696614,non-food,False
+-5.1882696,17.880434,non-food,cats and dogs,pizza,0.9282474600764605,non-food,True
+-3.5156863,21.99367,non-food,cats and dogs,pizza,0.5816556161421167,non-food,False
+-5.6026535,16.123816,non-food,cats and dogs,pizza,0.508576523859284,non-food,False
+10.517834,16.109724,non-food,cats and dogs,sushi,0.6012376266556897,non-food,False
+6.489663,16.339834,non-food,cats and dogs,sushi,0.620679170758328,non-food,False
+4.8498945,14.733261,non-food,cats and dogs,pizza,0.3907363590613832,non-food,False
+-0.19697005,15.670622,non-food,cats and dogs,pizza,0.6981159077877116,non-food,False
+6.9143424,18.384846,non-food,cats and dogs,sushi,0.41324128907627333,non-food,False
+1.7239236,13.426562,non-food,cats and dogs,sushi,0.5069687996548665,non-food,False
+-0.4240822,20.393328,non-food,cats and dogs,pizza,0.7483343509244675,non-food,False
+-1.3794883,21.637491,non-food,cats and dogs,pizza,0.9481944157032896,non-food,True
+9.377427,15.988152,non-food,cats and dogs,pizza,0.5598080189898064,non-food,False
+-0.012631977,9.216321,non-food,cats and dogs,pizza,0.46649308223178304,non-food,False
+3.6380172,10.118204,non-food,cats and dogs,sushi,0.48353962133858563,non-food,False
+-2.4220805,20.291344,non-food,cats and dogs,pizza,0.8831363805742433,non-food,True
+3.1912613,9.470212,non-food,cats and dogs,pizza,0.7202618807113026,non-food,False
+-0.08560098,19.80645,non-food,cats and dogs,pizza,0.6787921248811667,non-food,False
+8.396263,9.813321,non-food,cats and dogs,sushi,0.5192265121272781,non-food,False
+5.330748,13.676536,non-food,cats and dogs,pizza,0.5084059478396955,non-food,False
+3.77346,9.044926,non-food,cats and dogs,sushi,0.5612740049041277,non-food,False
+-0.4330011,22.242605,non-food,cats and dogs,pizza,0.46526377786600787,non-food,False
+7.3325496,6.7823076,non-food,cats and dogs,sushi,0.905850870442672,non-food,True
+0.113056205,7.699035,non-food,cats and dogs,pizza,0.43219826596311317,non-food,False
+-5.0431633,12.263338,non-food,cats and dogs,sushi,0.575085953127884,non-food,False
+3.212726,13.429992,non-food,cats and dogs,pizza,0.6654487527065645,non-food,False
+4.463688,7.5866485,non-food,cats and dogs,pizza,0.588613521751325,non-food,True
+0.7685798,22.796082,non-food,cats and dogs,pizza,0.45724891077103536,non-food,False
+8.018535,9.52283,non-food,cats and dogs,steak,0.5638875787480583,non-food,False
+10.441349,16.273155,non-food,cats and dogs,sushi,0.3521387294625904,non-food,False
+-4.1922674,9.044716,non-food,cats and dogs,pizza,0.657206335951365,non-food,True
+-1.3571848,23.887558,non-food,cats and dogs,pizza,0.7242736317717003,non-food,False
+7.665543,7.271456,non-food,cats and dogs,pizza,0.6270856956886484,non-food,True
+1.347679,20.349794,non-food,cats and dogs,pizza,0.7825753346791366,non-food,True
+0.09504323,11.731821,non-food,cats and dogs,pizza,0.4307010529615841,non-food,False
+1.2522316,8.835313,non-food,cats and dogs,pizza,0.7726042964651383,non-food,True
+-0.91854095,22.928411,non-food,cats and dogs,pizza,0.6682796025055018,non-food,False
+7.2410426,13.526653,non-food,cats and dogs,steak,0.5335853694538549,non-food,False
+-1.9867637,18.950195,non-food,cats and dogs,sushi,0.6920728243982023,non-food,False
+0.9731628,22.178606,non-food,cats and dogs,pizza,0.8470702191670163,non-food,True
+0.05255332,22.931347,non-food,cats and dogs,sushi,0.6277051267734194,non-food,False

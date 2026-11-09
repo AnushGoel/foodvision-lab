@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "FoodVision Lab: Explainable transfer learning for food image classification"
+abstract: "Benchmarking EfficientNet-B2, B3 and B4 as frozen feature extractors with validation-based model selection, interval estimates, paired significance tests, temperature scaling, Grad-CAM and a Streamlit application."
+authors:
+  - family-names: Goel
+    given-names: Anush
+version: 1.0.0
+date-released: 2026-11-08
+license: MIT
+repository-code: "https://github.com/AnushGoel/foodvision-lab"
+url: "https://foodvision-lab.streamlit.app/"
+keywords: [transfer learning, EfficientNet, explainable AI, calibration, streamlit]
