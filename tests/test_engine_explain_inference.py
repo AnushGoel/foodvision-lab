@@ -5,9 +5,8 @@ from PIL import Image
 torch = pytest.importorskip("torch")
 from torch import nn  # noqa: E402
 
-from foodvision.data import make_loader  # noqa: E402
+from foodvision.data import Sample, make_loader  # noqa: E402
 from foodvision.engine import evaluate, fit  # noqa: E402
-from foodvision.data import Sample  # noqa: E402
 from foodvision.experiments import features_for_files, logits_for_files, robustness_eval  # noqa: E402
 from foodvision.explain import GradCAM, overlay  # noqa: E402
 from foodvision.inference import Predictor  # noqa: E402

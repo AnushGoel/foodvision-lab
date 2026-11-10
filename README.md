@@ -139,9 +139,10 @@ Or run locally on any CUDA machine: `pip install -r requirements-train.txt && py
 
 ```bash
 pip install -r requirements-dev.txt && pip install -e . --no-deps
-pre-commit install            # ruff lint and format on every commit
-pre-commit run --all-files    # check the whole repository once
-pytest --cov
+pre-commit install            # sorts imports and formats code on every commit
+
+# before pushing: exactly the checks CI runs
+ruff check . && ruff format --check . && mypy && pytest --cov
 ```
 
 See [docs/TESTING.md](docs/TESTING.md).

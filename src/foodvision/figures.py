@@ -15,7 +15,6 @@ from .analysis import CORRUPTIONS, efficiency_summary
 from .artifacts import ArtifactStore, Files
 from .tokens import CORRUPTION_COLORS, GRID, INK, MODEL_COLORS, MUTED, SAFFRON
 
-
 PANEL_TITLE = "panel-title"
 
 

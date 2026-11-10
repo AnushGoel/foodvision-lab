@@ -1,4 +1,7 @@
-"""Validated single-image inference: calibrated probabilities, a not-food check, abstention and Grad-CAM."""
+"""Validated single-image inference: calibrated probabilities, a not-food check, abstention and Grad-CAM.
+
+``InvalidImageError`` and ``load_image`` are re-exported, so callers import validation and inference from one place.
+"""
 
 from __future__ import annotations
 
@@ -13,7 +16,6 @@ from PIL import Image
 from torchvision.transforms import functional as TF
 
 from .explain import GradCAM, overlay
-# re-exported so callers can import validation and inference from one place
 from .imageio import InvalidImageError, load_image  # noqa: F401
 from .models import get_transforms, load_checkpoint
 from .ood import SCORE_LABELS, single_score

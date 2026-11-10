@@ -53,6 +53,17 @@ omit = ["*/pipeline.py"]          # GPU orchestration; exercised by the Colab ru
 
 [tool.mypy]
 python_version = "3.11"
+files = [
+  "src/foodvision/config.py",
+  "src/foodvision/stats.py",
+  "src/foodvision/metrics.py",
+  "src/foodvision/calibration.py",
+  "src/foodvision/artifacts.py",
+  "src/foodvision/audit.py",
+  "src/foodvision/imageio.py",
+  "src/foodvision/reports.py",
+  "src/foodvision/ood.py",
+]  # the typed core; CI runs plain `mypy`
 ignore_missing_imports = true
 warn_unused_ignores = true
 check_untyped_defs = true

@@ -12,13 +12,13 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageDraw
 
-from foodvision.artifacts import SCHEMA_VERSION, ArtifactStore, Files
 from foodvision.analysis import CORRUPTIONS, conditions
+from foodvision.artifacts import SCHEMA_VERSION, ArtifactStore, Files
 from foodvision.audit import audit_dataset
 from foodvision.calibration import calibration_summary, softmax
+from foodvision.figures import summary_figure
 from foodvision.metrics import classification_report, macro_f1
 from foodvision.ood import SOURCES, evaluate, score_table
-from foodvision.figures import summary_figure
 from foodvision.reports import write_reports
 from foodvision.stats import bootstrap_ci, holm_correction, mcnemar_exact, paired_bootstrap_difference, wilson_interval
 

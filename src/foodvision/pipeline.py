@@ -23,10 +23,10 @@ import torch
 import torchvision
 
 from . import __version__
+from .analysis import CORRUPTIONS
 from .artifacts import SCHEMA_VERSION, ArtifactStore, Files
 from .audit import audit_dataset
 from .config import Config, load_config
-from .analysis import CORRUPTIONS
 from .experiments import (
     DataBundle,
     benchmark_latency,

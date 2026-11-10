@@ -28,11 +28,8 @@ jobs:
       - name: Formatting (ruff format)
         run: ruff format --check .
 
-      - name: Type check (typed core modules)
-        run: >
-          mypy src/foodvision/config.py src/foodvision/stats.py src/foodvision/metrics.py
-          src/foodvision/calibration.py src/foodvision/artifacts.py src/foodvision/audit.py
-          src/foodvision/imageio.py src/foodvision/reports.py src/foodvision/ood.py
+      - name: Type check (typed core modules, listed in pyproject.toml)
+        run: mypy
 
       - name: Unit and app tests
         run: pytest --cov --cov-report=term-missing

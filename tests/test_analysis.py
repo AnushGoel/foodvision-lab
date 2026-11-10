@@ -4,7 +4,15 @@ import numpy as np
 import pytest
 from PIL import Image, ImageDraw
 
-from foodvision.analysis import CORRUPTIONS, SEVERITIES, conditions, corrupt, efficiency_summary, nested_subset, project_2d
+from foodvision.analysis import (
+    CORRUPTIONS,
+    SEVERITIES,
+    conditions,
+    corrupt,
+    efficiency_summary,
+    nested_subset,
+    project_2d,
+)
 from foodvision.artifacts import ArtifactStore, Files
 from foodvision.figures import summary_figure
 
