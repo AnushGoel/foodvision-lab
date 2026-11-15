@@ -3,6 +3,10 @@ name: CI
 on:
   push:
   pull_request:
+  workflow_dispatch:   # adds a "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write      # lets the push run commit Ruff's fixes back to the branch
 
 jobs:
   quality-and-tests:
@@ -22,11 +26,22 @@ jobs:
           pip install -r requirements-dev.txt
           pip install -e . --no-deps
 
-      - name: Lint (ruff)
-        run: ruff check .
-
-      - name: Formatting (ruff format)
-        run: ruff format --check .
+      - name: Lint and format (ruff)
+        # Pull requests must arrive clean. On pushes, Ruff sorts imports and formats the code itself, and any change is
+        # committed back by github-actions[bot] before the remaining checks run on the formatted code.
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            ruff check --fix .
+            ruff format .
+            if ! git diff --quiet; then
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit --all --quiet --message "Apply Ruff formatting [skip ci]"
+              git push || echo "::warning::Could not push the formatting commit; the next push will format again."
+            fi
+          fi
+          ruff check .
+          ruff format --check .
 
       - name: Type check (typed core modules, listed in pyproject.toml)
         run: mypy
