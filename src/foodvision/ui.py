@@ -82,7 +82,9 @@ def missing_notice(*names: str) -> bool:
     """Show directions inside a tab or section and return True when results are missing (does not stop the page)."""
     missing = store().missing(*names)
     if missing:
-        st.info(f"Not generated yet ({', '.join(f'`{m}`' for m in missing)}). Run the pipeline and commit `artifacts/`.")
+        st.info(
+            f"Not generated yet ({', '.join(f'`{m}`' for m in missing)}). Run the pipeline and commit `artifacts/`."
+        )
     return bool(missing)
 
 

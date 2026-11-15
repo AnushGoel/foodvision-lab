@@ -78,8 +78,9 @@ def test_overlay_keeps_image_size():
 
 def test_predictor_end_to_end(tmp_path):
     torch.manual_seed(0)
-    save_checkpoint(build_model("effnetb2", 3, pretrained=False), tmp_path / "m.pt", "effnetb2", CLASSES,
-                    {"temperature": 1.5})
+    save_checkpoint(
+        build_model("effnetb2", 3, pretrained=False), tmp_path / "m.pt", "effnetb2", CLASSES, {"temperature": 1.5}
+    )
     predictor = Predictor(tmp_path / "m.pt", pretrained=False)
     image = Image.new("RGB", (400, 300), (200, 80, 40))
     prediction = predictor.predict(image)
@@ -95,8 +96,10 @@ def test_predictor_applies_the_stored_not_food_check(tmp_path):
     model = build_model("effnetb2", 3, pretrained=False)
     image = Image.new("RGB", (320, 240), (90, 160, 60))
     for threshold, expected in ((-1e9, True), (1e9, False)):
-        meta = {"temperature": np.float64(1.2), "ood": {"score": "energy", "threshold": threshold,
-                                                       "temperature": 1.2, "target_tpr": 0.95}}
+        meta = {
+            "temperature": np.float64(1.2),
+            "ood": {"score": "energy", "threshold": threshold, "temperature": 1.2, "target_tpr": 0.95},
+        }
         save_checkpoint(model, tmp_path / "m.pt", "effnetb2", CLASSES, meta)  # NumPy number must be cleaned
         predictor = Predictor(tmp_path / "m.pt", pretrained=False)
         prediction = predictor.predict(image)

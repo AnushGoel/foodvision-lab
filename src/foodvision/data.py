@@ -86,7 +86,9 @@ def download_ood_source(root: str | Path, source: str, attempts: int = 3) -> lis
             getattr(tv_datasets, spec["dataset"])(str(folder), split="test", download=True)
             break
         except ImportError as error:  # e.g. scipy, needed only to read Flowers-102 labels: the photos are there
-            LOG.warning("%s downloaded but its labels could not be read (%s); using the photos only", spec["label"], error)
+            LOG.warning(
+                "%s downloaded but its labels could not be read (%s); using the photos only", spec["label"], error
+            )
             break
         except DOWNLOAD_ERRORS as error:
             LOG.warning("Download of %s failed (attempt %d of %d): %s", spec["label"], attempt, attempts, error)

@@ -155,8 +155,10 @@ def _analysis_markdown(store: ArtifactStore) -> list[str]:
         if "accepted_as_food" in r.columns:
             strong = rows[rows["severity"] == 3]
             worst = strong.sort_values("accepted_as_food").iloc[0]
-            parts.append(f"\nAt strong corruption the not-food check accepted as little as "
-                         f"{_pct(worst['accepted_as_food'])} of real food photos ({_mid_sentence(str(worst['label']))}).")
+            parts.append(
+                f"\nAt strong corruption the not-food check accepted as little as "
+                f"{_pct(worst['accepted_as_food'])} of real food photos ({_mid_sentence(str(worst['label']))})."
+            )
     if store.exists(Files.DATA_EFFICIENCY):
         summary = efficiency_summary(store.read_csv(Files.DATA_EFFICIENCY))
         view = pd.DataFrame(
@@ -176,8 +178,10 @@ def _analysis_markdown(store: ArtifactStore) -> list[str]:
         ]
     if store.exists(Files.FEATURE_MAP):
         fmap = store.read_csv(Files.FEATURE_MAP)
-        parts.append(f"\nFeature map: {int((fmap['group'] == 'food').sum())} food and "
-                     f"{int((fmap['group'] == 'non-food').sum())} non-food test photos projected with t-SNE (see the app).")
+        parts.append(
+            f"\nFeature map: {int((fmap['group'] == 'food').sum())} food and "
+            f"{int((fmap['group'] == 'non-food').sum())} non-food test photos projected with t-SNE (see the app)."
+        )
     return parts
 
 
@@ -286,9 +290,7 @@ def model_card_markdown(store: ArtifactStore) -> str:
         metric_text += "; for the not-food check, AUROC and the shares of food and non-food photos accepted"
     metric_text += "."
 
-    evaluation = [
-        f"- {n_test or 'The'} Food-101 test photos, held out from training and from every choice above."
-    ]
+    evaluation = [f"- {n_test or 'The'} Food-101 test photos, held out from training and from every choice above."]
     if ood_ok:
         collections = " and ".join(f"{v['label']} ({v['content']}; {v['citation']})" for v in o["sources"].values())
         evaluation.append(
@@ -359,7 +361,8 @@ def model_card_markdown(store: ArtifactStore) -> str:
         analyses += [
             "",
             "Robustness (exploratory, corrupted copies of the test photos): at the strongest level tested, accuracy was "
-            + "; ".join(f"{_mid_sentence(str(row.label))} {_pct(row.accuracy)}" for row in strong.itertuples()) + ".",
+            + "; ".join(f"{_mid_sentence(str(row.label))} {_pct(row.accuracy)}" for row in strong.itertuples())
+            + ".",
         ]
     cpu = [b for b in bench if b["model"] == m["arch"] and b["device"] == "cpu"]
     if cpu:
@@ -386,8 +389,11 @@ def model_card_markdown(store: ArtifactStore) -> str:
     if not ood_ok:
         caveats.insert(0, "- No not-food check: every image, food or not, receives one of the three labels.")
     if store.exists(Files.ROBUSTNESS):
-        caveats.insert(0, "- Expect lower accuracy on blurred, dark, noisy, compressed or low-resolution photos; the "
-                       "robustness results above show by how much.")
+        caveats.insert(
+            0,
+            "- Expect lower accuracy on blurred, dark, noisy, compressed or low-resolution photos; the "
+            "robustness results above show by how much.",
+        )
 
     environment = ", ".join(f"{k} {v}" for k, v in m["environment"].items() if v)
     sections = [
@@ -454,26 +460,44 @@ def readme_results(store: ArtifactStore) -> str:
     bench = _read(store, Files.BENCHMARK) or []
     low, high = report["accuracy_wilson"]
     rows = [
-        ("Selected model", f"{sel['label']}, {sel['epochs']} epochs, chosen on validation data over "
-                           f"{len(sel['seeds'])} seeds"),
-        ("Test accuracy", f"{_pct(report['accuracy'])} ({report['n_correct']} of {report['n_test']}), "
-                          f"95% CI {_pct(low)} to {_pct(high)}"),
+        (
+            "Selected model",
+            f"{sel['label']}, {sel['epochs']} epochs, chosen on validation data over " f"{len(sel['seeds'])} seeds",
+        ),
+        (
+            "Test accuracy",
+            f"{_pct(report['accuracy'])} ({report['n_correct']} of {report['n_test']}), "
+            f"95% CI {_pct(low)} to {_pct(high)}",
+        ),
         ("Macro-F1", _pct(report["macro_f1"])),
     ]
     if calibration:
-        rows.append(("Calibration error (ECE)", f"{calibration['uncalibrated']['ece']:.3f} before and "
-                     f"{calibration['temperature_scaled']['ece']:.3f} after temperature scaling"))
+        rows.append(
+            (
+                "Calibration error (ECE)",
+                f"{calibration['uncalibrated']['ece']:.3f} before and "
+                f"{calibration['temperature_scaled']['ece']:.3f} after temperature scaling",
+            )
+        )
     if ood and ood.get("status") == "ok":
         test = ood["test"]
-        rows.append(("Not-food check", f"AUROC {test['auroc']['estimate']:.3f}; flags "
-                     f"{_pct(test['rejected_non_food'], 0)} of non-food photos and keeps "
-                     f"{_pct(test['accepted_food'], 0)} of food photos"))
+        rows.append(
+            (
+                "Not-food check",
+                f"AUROC {test['auroc']['estimate']:.3f}; flags "
+                f"{_pct(test['rejected_non_food'], 0)} of non-food photos and keeps "
+                f"{_pct(test['accepted_food'], 0)} of food photos",
+            )
+        )
     cpu = [b for b in bench if b["model"] == meta["arch"] and b["device"] == "cpu"]
     speed = f"; {cpu[0]['median_ms']:.0f} ms per photo on a CPU" if cpu else ""
     rows.append(("Model file", f"{meta['file']['bytes'] / 1024:.0f} KB delta checkpoint{speed}"))
     lines = ["| Result | Value |", "| --- | --- |", *(f"| {name} | {value} |" for name, value in rows)]
-    lines += ["", "<sub>Generated from `artifacts/` by `python -m foodvision.reports`; "
-                  "the test suite fails if this table and the results disagree.</sub>"]
+    lines += [
+        "",
+        "<sub>Generated from `artifacts/` by `python -m foodvision.reports`; "
+        "the test suite fails if this table and the results disagree.</sub>",
+    ]
     return "\n".join(lines)
 
 

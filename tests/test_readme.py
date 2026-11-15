@@ -17,9 +17,9 @@ def test_readme_results_match_the_committed_artifacts():
     text = (ROOT / "README.md").read_text(encoding="utf-8")
     assert README_START in text and README_END in text, "README.md lost its results markers"
     block = text.split(README_START, 1)[1].split(README_END, 1)[0]
-    assert block.strip() == readme_results(store).strip(), (
-        "README results are out of date: run `python -m foodvision.reports` and commit README.md"
-    )
+    assert (
+        block.strip() == readme_results(store).strip()
+    ), "README results are out of date: run `python -m foodvision.reports` and commit README.md"
 
 
 def test_update_readme_rewrites_only_the_generated_block(tmp_path, artifacts_dir):

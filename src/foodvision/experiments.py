@@ -86,8 +86,15 @@ def run_assignment(cfg: Config, bundle: DataBundle, device: torch.device) -> tup
             writer = _writer(Path(cfg.paths.runs) / "assignment" / name / f"{epochs}_epochs")
             start = time.perf_counter()
             history, _ = fit(
-                model, loaders, epochs, cfg.train.learning_rate, device, ("test",), writer,
-                freeze_bn_stats=cfg.train.freeze_bn_stats, label=f"[assignment] {name} {epochs}ep",
+                model,
+                loaders,
+                epochs,
+                cfg.train.learning_rate,
+                device,
+                ("test",),
+                writer,
+                freeze_bn_stats=cfg.train.freeze_bn_stats,
+                label=f"[assignment] {name} {epochs}ep",
             )
             seconds = time.perf_counter() - start
             histories[f"{name}_{epochs}"] = history
@@ -188,7 +195,12 @@ def logits_for_files(
 
 
 def not_food_check(
-    cfg: Config, model: nn.Module, name: str, val_logits: np.ndarray, test_logits: np.ndarray, temperature: float,
+    cfg: Config,
+    model: nn.Module,
+    name: str,
+    val_logits: np.ndarray,
+    test_logits: np.ndarray,
+    temperature: float,
     device: torch.device,
 ) -> tuple[dict[str, Any], pd.DataFrame | None]:
     """Choose an out-of-distribution score and threshold on validation data and test them once (see ``ood``)."""
@@ -207,22 +219,36 @@ def not_food_check(
         return {"status": "skipped", "reason": "too few readable non-food photos"}, None
     test_sources = [test_pairs[i][1] for i in kept_test]
     report = O.evaluate(
-        val_logits, val_ood, test_logits, test_ood, test_sources, temperature, cfg.ood.target_tpr,
-        cfg.evaluation.bootstrap_resamples, cfg.seed,
+        val_logits,
+        val_ood,
+        test_logits,
+        test_ood,
+        test_sources,
+        temperature,
+        cfg.ood.target_tpr,
+        cfg.evaluation.bootstrap_resamples,
+        cfg.seed,
     )
     report["sources"] = {
         source: {**O.SOURCES[source], "available": len(paths)} for source, paths in sorted(files.items())
     }
     table = O.score_table(
         {"val_food": val_logits, "val_non_food": val_ood, "test_food": test_logits, "test_non_food": test_ood},
-        {"val_food": ["foodvision"] * len(val_logits), "val_non_food": [val_pairs[i][1] for i in kept_val],
-         "test_food": ["foodvision"] * len(test_logits), "test_non_food": test_sources},
+        {
+            "val_food": ["foodvision"] * len(val_logits),
+            "val_non_food": [val_pairs[i][1] for i in kept_val],
+            "test_food": ["foodvision"] * len(test_logits),
+            "test_non_food": test_sources,
+        },
         temperature,
     )
     test = report["test"]
     LOG.info(
         "Not-food check (%s): test AUROC %.3f; rejects %.0f%% of non-food photos, accepts %.0f%% of food photos",
-        report["score"], test["auroc"]["estimate"], 100 * test["rejected_non_food"], 100 * test["accepted_food"],
+        report["score"],
+        test["auroc"]["estimate"],
+        100 * test["rejected_non_food"],
+        100 * test["accepted_food"],
     )
     return report, table
 
@@ -251,8 +277,16 @@ def run_research(cfg: Config, bundle: DataBundle, device: torch.device) -> Resea
             loaders = {"train": D.make_loader(xtr, ytr, bs, True, seed, cfg.train.drop_last), "val": val_loader}
             writer = _writer(Path(cfg.paths.runs) / "research" / f"seed_{seed}" / name)
             history, snaps = fit(
-                model, loaders, max(budgets), cfg.train.learning_rate, device, ("val",), writer, budgets,
-                cfg.train.freeze_bn_stats, label=f"[research] {name} seed {seed}",
+                model,
+                loaders,
+                max(budgets),
+                cfg.train.learning_rate,
+                device,
+                ("val",),
+                writer,
+                budgets,
+                cfg.train.freeze_bn_stats,
+                label=f"[research] {name} seed {seed}",
             )
             histories[f"{name}_seed{seed}"] = history
             for epochs in budgets:  # the budgets are stopping points on one run
@@ -278,15 +312,28 @@ def run_research(cfg: Config, bundle: DataBundle, device: torch.device) -> Resea
             model = build_model(name, k)
             loaders = {"train": D.make_loader(xtr, ytr, bs, True, cfg.seed, cfg.train.drop_last), "val": val_loader}
             _, snaps = fit(
-                model, loaders, max(budgets), cfg.train.learning_rate, device, ("val",), None, budgets, frozen,
+                model,
+                loaders,
+                max(budgets),
+                cfg.train.learning_rate,
+                device,
+                ("val",),
+                None,
+                budgets,
+                frozen,
                 label=f"[bn ablation] {name}",
             )
             for epochs in budgets:
                 model.load_state_dict(snaps[epochs], strict=False)
                 result = evaluate(model, val_loader, device)
                 bn_rows.append(
-                    {"model": name, "epochs": epochs, "bn_statistics": "frozen" if frozen else "adapting",
-                     "val_acc": result["acc"], "val_loss": result["loss"]}
+                    {
+                        "model": name,
+                        "epochs": epochs,
+                        "bn_statistics": "frozen" if frozen else "adapting",
+                        "val_acc": result["acc"],
+                        "val_loss": result["loss"],
+                    }
                 )
         del xtr, xva
 
@@ -414,8 +461,20 @@ def run_research(cfg: Config, bundle: DataBundle, device: torch.device) -> Resea
         )[["model", "epochs", "bn_statistics", "val_acc", "val_loss"]]
         bn_ablation = pd.concat([baseline, pd.DataFrame(bn_rows)], ignore_index=True)
     return ResearchResult(
-        validation, histories, selection, test_report, predictions, calibration, bn_ablation,
-        model, name, epochs, list(bundle.test), probs, ood_report, ood_scores,
+        validation,
+        histories,
+        selection,
+        test_report,
+        predictions,
+        calibration,
+        bn_ablation,
+        model,
+        name,
+        epochs,
+        list(bundle.test),
+        probs,
+        ood_report,
+        ood_scores,
     )
 
 
@@ -497,8 +556,14 @@ def benchmark_latency(models: tuple[str, ...], runs: int) -> list[dict[str, Any]
 # --------------------------------------------------------------------------- analysis of the selected model
 @torch.inference_mode()
 def robustness_eval(
-    model: nn.Module, name: str, samples: list[D.Sample], temperature: float, ood_meta: dict[str, Any] | None,
-    device: torch.device, seed: int, batch_size: int = 32,
+    model: nn.Module,
+    name: str,
+    samples: list[D.Sample],
+    temperature: float,
+    ood_meta: dict[str, Any] | None,
+    device: torch.device,
+    seed: int,
+    batch_size: int = 32,
 ) -> pd.DataFrame:
     """Accuracy on corrupted copies of the test photos and, with a not-food check, how much real food it still accepts.
 
@@ -518,8 +583,10 @@ def robustness_eval(
         rng = np.random.default_rng(seed)  # the same noise pattern in every run
         chunks = []
         for start in range(0, len(views), batch_size):
-            batch = [TF.normalize(TF.to_tensor(A.corrupt(v, kind, severity, rng)), tf.mean, tf.std)
-                     for v in views[start:start + batch_size]]
+            batch = [
+                TF.normalize(TF.to_tensor(A.corrupt(v, kind, severity, rng)), tf.mean, tf.std)
+                for v in views[start : start + batch_size]
+            ]
             chunks.append(model(torch.stack(batch).to(device)).float().cpu())
         logits = torch.cat(chunks).numpy()
         probs = softmax(logits, temperature)
@@ -541,13 +608,20 @@ def robustness_eval(
             row["accepted_as_food"] = float((score >= ood_meta["threshold"]).mean())
         rows.append(row)
         if severity in (0, 3):
-            LOG.info("[robustness] %s %s: accuracy %.1f%%", row["label"], "strong" if severity else "", 100 * row["accuracy"])
+            LOG.info(
+                "[robustness] %s %s: accuracy %.1f%%", row["label"], "strong" if severity else "", 100 * row["accuracy"]
+            )
     return pd.DataFrame(rows)
 
 
 def feature_map(
-    cfg: Config, model: nn.Module, name: str, bundle: DataBundle, temperature: float,
-    ood_meta: dict[str, Any] | None, device: torch.device,
+    cfg: Config,
+    model: nn.Module,
+    name: str,
+    bundle: DataBundle,
+    temperature: float,
+    ood_meta: dict[str, Any] | None,
+    device: torch.device,
 ) -> pd.DataFrame:
     """2D map of what the network sees: the test food photos plus the non-food test sample of the not-food check."""
     tf = get_transforms(name)
@@ -570,12 +644,19 @@ def feature_map(
     xy = A.project_2d(feats, cfg.seed, cfg.analysis.perplexity)
     probs = softmax(logits, temperature)
     frame = pd.DataFrame(
-        {"x": xy[:, 0], "y": xy[:, 1], "group": groups, "label": labels,
-         "prediction": [bundle.classes[i] for i in probs.argmax(1)], "confidence": probs.max(1)}
+        {
+            "x": xy[:, 0],
+            "y": xy[:, 1],
+            "group": groups,
+            "label": labels,
+            "prediction": [bundle.classes[i] for i in probs.argmax(1)],
+            "confidence": probs.max(1),
+        }
     )
     is_food = frame["group"] == "food"
-    frame["outcome"] = np.where(is_food, np.where(frame["label"] == frame["prediction"], "correct", "misclassified"),
-                                "non-food")
+    frame["outcome"] = np.where(
+        is_food, np.where(frame["label"] == frame["prediction"], "correct", "misclassified"), "non-food"
+    )
     if ood_meta:
         frame["accepted_as_food"] = O.scores(logits, temperature)[ood_meta["score"]] >= ood_meta["threshold"]
     LOG.info("[feature map] %d food and %d non-food photos projected with t-SNE", is_food.sum(), (~is_food).sum())
@@ -605,14 +686,41 @@ def data_efficiency(
             model = build_model(name, k)
             drop_last = cfg.train.drop_last and len(index) > bs
             loaders = {"train": D.make_loader(xtr[index], ytr[index], bs, True, seed, drop_last)}
-            fit(model, loaders, epochs, cfg.train.learning_rate, device, (), None, (), cfg.train.freeze_bn_stats,
-                label=f"[data efficiency] {name} {fraction:.0%} seed {seed}")
+            fit(
+                model,
+                loaders,
+                epochs,
+                cfg.train.learning_rate,
+                device,
+                (),
+                None,
+                (),
+                cfg.train.freeze_bn_stats,
+                label=f"[data efficiency] {name} {fraction:.0%} seed {seed}",
+            )
             result = evaluate(model, val_loader, device)
-            rows.append({"fraction": fraction, "n_train": len(index), "seed": seed, "val_acc": result["acc"],
-                         "val_loss": result["loss"], "source": "this analysis"})
+            rows.append(
+                {
+                    "fraction": fraction,
+                    "n_train": len(index),
+                    "seed": seed,
+                    "val_acc": result["acc"],
+                    "val_loss": result["loss"],
+                    "source": "this analysis",
+                }
+            )
     if 1.0 in cfg.analysis.fractions:
         full = validation[(validation["model"] == name) & (validation["epochs"] == epochs)]
-        rows += [{"fraction": 1.0, "n_train": len(train_s), "seed": int(r.seed), "val_acc": float(r.val_acc),
-                  "val_loss": float(r.val_loss), "source": "research runs"} for r in full.itertuples()]
+        rows += [
+            {
+                "fraction": 1.0,
+                "n_train": len(train_s),
+                "seed": int(r.seed),
+                "val_acc": float(r.val_acc),
+                "val_loss": float(r.val_loss),
+                "source": "research runs",
+            }
+            for r in full.itertuples()
+        ]
     del xtr, xva
     return pd.DataFrame(rows)

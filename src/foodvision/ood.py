@@ -31,10 +31,20 @@ SCORE_LABELS = {
 }
 # Public non-food photo collections, downloaded through torchvision. Only scores are kept, never the images.
 SOURCES: dict[str, dict[str, str]] = {
-    "flowers102": {"label": "Flowers-102", "content": "flowers", "citation": "Nilsback & Zisserman, 2008",
-                   "dataset": "Flowers102", "pattern": "flowers-102/jpg/*.jpg"},
-    "oxford_pets": {"label": "Oxford-IIIT Pet", "content": "cats and dogs", "citation": "Parkhi et al., 2012",
-                    "dataset": "OxfordIIITPet", "pattern": "oxford-iiit-pet/images/*.jpg"},
+    "flowers102": {
+        "label": "Flowers-102",
+        "content": "flowers",
+        "citation": "Nilsback & Zisserman, 2008",
+        "dataset": "Flowers102",
+        "pattern": "flowers-102/jpg/*.jpg",
+    },
+    "oxford_pets": {
+        "label": "Oxford-IIIT Pet",
+        "content": "cats and dogs",
+        "citation": "Parkhi et al., 2012",
+        "dataset": "OxfordIIITPet",
+        "pattern": "oxford-iiit-pet/images/*.jpg",
+    },
 }
 
 
@@ -191,8 +201,12 @@ def score_table(
         values = scores(z, temperature)
         frames.append(
             pd.DataFrame(
-                {"split": split, "group": group.replace("_", "-"), "source": list(sources[key]),
-                 **{name: values[name] for name in SCORES}}
+                {
+                    "split": split,
+                    "group": group.replace("_", "-"),
+                    "source": list(sources[key]),
+                    **{name: values[name] for name in SCORES},
+                }
             )
         )
     return pd.concat(frames, ignore_index=True)

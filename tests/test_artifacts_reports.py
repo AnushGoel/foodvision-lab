@@ -25,13 +25,27 @@ def test_reports_render_from_synthetic_artifacts(artifacts_dir):
     assert "Assignment protocol" in experiments and "Research protocol" in experiments and "McNemar" in experiments
     assert "Images per class" in audit_markdown(store)
     card = model_card_markdown(store)
-    for section in ("## Model details", "## Intended use", "**Out of scope:**", "## Factors", "## Metrics",
-                    "## Evaluation data", "## Training data", "## Quantitative analyses", "## Ethical considerations",
-                    "## Caveats and recommendations"):
+    for section in (
+        "## Model details",
+        "## Intended use",
+        "**Out of scope:**",
+        "## Factors",
+        "## Metrics",
+        "## Evaluation data",
+        "## Training data",
+        "## Quantitative analyses",
+        "## Ethical considerations",
+        "## Caveats and recommendations",
+    ):
         assert section in card, section
     assert "Not-food check" in card and "allergies" in card and "Robustness" in card
-    for section in ("Analysis of the selected model", "Robustness to everyday photo problems", "Data efficiency",
-                    "Checkpoint check", "Feature map"):
+    for section in (
+        "Analysis of the selected model",
+        "Robustness to everyday photo problems",
+        "Data efficiency",
+        "Checkpoint check",
+        "Feature map",
+    ):
         assert section in experiments, section
     assert store.exists("reports/EXPERIMENTS.md")
 
@@ -46,8 +60,15 @@ def test_to_builtin_returns_exact_builtin_types():
     class VersionString(str):
         pass
 
-    clean = to_builtin({"torch": VersionString("2.6.0"), "t": np.float32(1.5), "ok": np.bool_(True),
-                        "path": Path("a"), "items": (VersionString("x"), np.int64(2))})
+    clean = to_builtin(
+        {
+            "torch": VersionString("2.6.0"),
+            "t": np.float32(1.5),
+            "ok": np.bool_(True),
+            "path": Path("a"),
+            "items": (VersionString("x"), np.int64(2)),
+        }
+    )
     assert clean == {"torch": "2.6.0", "t": 1.5, "ok": True, "path": "a", "items": ["x", 2]}
     assert type(clean["torch"]) is str and type(clean["items"][0]) is str and clean["ok"] is True
     assert b"VersionString" not in pickle.dumps(clean)

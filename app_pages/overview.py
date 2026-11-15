@@ -9,8 +9,9 @@ from foodvision.viz import label
 st.markdown(ui.CSS, unsafe_allow_html=True)
 left, right = st.columns([1.25, 1], gap="large")
 with left:
-    st.markdown("<div class='fv-hero'><h1>Which dish is it, and what did the model look at?</h1></div>",
-                unsafe_allow_html=True)
+    st.markdown(
+        "<div class='fv-hero'><h1>Which dish is it, and what did the model look at?</h1></div>", unsafe_allow_html=True
+    )
     st.markdown(
         "<p class='fv-lede'>FoodVision Lab compares EfficientNet-B2, B3 and B4 as frozen ImageNet feature extractors "
         "on pizza, steak and sushi photos from Food-101. It reproduces the course assignment, then selects a model on "
@@ -37,8 +38,10 @@ with right:
         view, cam = st.columns(2)
         view.image(str(ui.store().path(f"gallery/{example['view']}")), caption="What the model sees")
         cam.image(str(ui.store().path(f"gallery/{example['cam']}")), caption="Regions that raised the score")
-        ui.note(f"{report['label']} labels this {example['label']} photo as {example['prediction']} with "
-                f"{example['confidence']:.0%} confidence. Grad-CAM shows correlation with the decision, not its cause.")
+        ui.note(
+            f"{report['label']} labels this {example['label']} photo as {example['prediction']} with "
+            f"{example['confidence']:.0%} confidence. Grad-CAM shows correlation with the decision, not its cause."
+        )
 
 st.subheader("Findings")
 findings = [
@@ -109,12 +112,18 @@ if ui.available(Files.DATA_EFFICIENCY):
         )
 for text in findings:
     st.markdown(f"<div class='fv-finding'>{text}</div>", unsafe_allow_html=True)
-ui.note("Use the sidebar to inspect the experiments, the errors, the reliability of the probabilities, "
-        "or to try the model on your own photo.")
+ui.note(
+    "Use the sidebar to inspect the experiments, the errors, the reliability of the probabilities, "
+    "or to try the model on your own photo."
+)
 
 if ui.available(Files.SUMMARY_FIGURE):
     st.subheader("Share these results")
     figure = ui.store().path(Files.SUMMARY_FIGURE)
     st.image(str(figure))
-    st.download_button("Download the summary figure (PNG)", figure.read_bytes(), file_name="foodvision-lab-summary.png",
-                       mime="image/png")
+    st.download_button(
+        "Download the summary figure (PNG)",
+        figure.read_bytes(),
+        file_name="foodvision-lab-summary.png",
+        mime="image/png",
+    )

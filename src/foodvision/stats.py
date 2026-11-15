@@ -56,7 +56,11 @@ def bootstrap_ci(
 
 
 def paired_bootstrap_difference(
-    correct_a: Sequence[bool], correct_b: Sequence[bool], n_resamples: int = 10_000, confidence: float = 0.95, seed: int = 0
+    correct_a: Sequence[bool],
+    correct_b: Sequence[bool],
+    n_resamples: int = 10_000,
+    confidence: float = 0.95,
+    seed: int = 0,
 ) -> dict[str, float]:
     """Bootstrap interval for accuracy(A) - accuracy(B) on the same test images."""
     a = np.asarray(correct_a, dtype=float)

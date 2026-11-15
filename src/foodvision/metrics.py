@@ -25,9 +25,7 @@ def _safe_div(num: np.ndarray, den: np.ndarray) -> np.ndarray:
     return np.divide(num, den, out=np.zeros(num.shape, dtype=float), where=den > 0)
 
 
-def classification_report(
-    y_true: Sequence[int], y_pred: Sequence[int], class_names: Sequence[str]
-) -> dict[str, Any]:
+def classification_report(y_true: Sequence[int], y_pred: Sequence[int], class_names: Sequence[str]) -> dict[str, Any]:
     """Accuracy, per-class precision/recall/F1/support, and macro- and weighted-averaged F1."""
     k = len(class_names)
     cm = confusion_matrix(y_true, y_pred, k)

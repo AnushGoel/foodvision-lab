@@ -29,4 +29,6 @@ def test_empty_class_gives_zero_not_nan():
 
 def test_macro_f1_helper_matches_report():
     y_true, y_pred = [0, 1, 2, 2, 1], [0, 2, 2, 2, 1]
-    assert macro_f1(y_true, y_pred, 3) == pytest.approx(classification_report(y_true, y_pred, ["a", "b", "c"])["macro_f1"])
+    assert macro_f1(y_true, y_pred, 3) == pytest.approx(
+        classification_report(y_true, y_pred, ["a", "b", "c"])["macro_f1"]
+    )

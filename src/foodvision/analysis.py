@@ -83,8 +83,13 @@ def project_2d(features: np.ndarray, seed: int = 0, perplexity: float = 30.0) ->
         raise ValueError("A feature map needs at least five images")
     x = x / np.maximum(np.linalg.norm(x, axis=1, keepdims=True), 1e-12)
     reduced = PCA(n_components=min(50, len(x) - 1, x.shape[1]), random_state=seed).fit_transform(x)
-    tsne = TSNE(n_components=2, perplexity=min(perplexity, (len(x) - 1) / 3), init="pca", learning_rate="auto",
-                random_state=seed)
+    tsne = TSNE(
+        n_components=2,
+        perplexity=min(perplexity, (len(x) - 1) / 3),
+        init="pca",
+        learning_rate="auto",
+        random_state=seed,
+    )
     return np.asarray(tsne.fit_transform(reduced))
 
 
@@ -92,8 +97,12 @@ def efficiency_summary(frame: pd.DataFrame) -> pd.DataFrame:
     """Mean and spread of validation accuracy per training fraction."""
     return (
         frame.groupby("fraction")
-        .agg(n_train=("n_train", "mean"), val_acc_mean=("val_acc", "mean"), val_acc_sd=("val_acc", "std"),
-             runs=("val_acc", "size"))
+        .agg(
+            n_train=("n_train", "mean"),
+            val_acc_mean=("val_acc", "mean"),
+            val_acc_sd=("val_acc", "std"),
+            runs=("val_acc", "size"),
+        )
         .reset_index()
         .sort_values("fraction")
     )

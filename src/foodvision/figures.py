@@ -65,8 +65,16 @@ def _style(ax: Any, title: str, grid_axis: str = "both") -> None:
 def _missing(ax: Any, title: str) -> None:
     ax.axis("off")
     ax.set_title(title, loc="left", fontsize=11.5, color=INK, fontweight="bold", pad=10, gid=PANEL_TITLE)
-    ax.text(0.5, 0.5, "not generated in this run", ha="center", va="center", color=MUTED, fontsize=10,
-            transform=ax.transAxes)
+    ax.text(
+        0.5,
+        0.5,
+        "not generated in this run",
+        ha="center",
+        va="center",
+        color=MUTED,
+        fontsize=10,
+        transform=ax.transAxes,
+    )
 
 
 def _validation_panel(ax: Any, sel: dict[str, Any]) -> None:
@@ -76,9 +84,15 @@ def _validation_panel(ax: Any, sel: dict[str, Any]) -> None:
     mean = 100 * table["val_acc_mean"].to_numpy()
     spread = 100 * pd.to_numeric(table["val_acc_sd"], errors="coerce").fillna(0.0).to_numpy()
     ax.errorbar(mean, y, xerr=spread, fmt="none", ecolor="#C9CED6", elinewidth=2, zorder=1)
-    ax.scatter(mean, y, s=np.where(selected, 95, 55), zorder=2,
-               c=[SAFFRON if s else MODEL_COLORS.get(m, MUTED) for m, s in zip(table["model"], selected)],
-               edgecolors=[INK if s else "none" for s in selected], linewidths=1.2)
+    ax.scatter(
+        mean,
+        y,
+        s=np.where(selected, 95, 55),
+        zorder=2,
+        c=[SAFFRON if s else MODEL_COLORS.get(m, MUTED) for m, s in zip(table["model"], selected)],
+        edgecolors=[INK if s else "none" for s in selected],
+        linewidths=1.2,
+    )
     ax.set_yticks(y, [f"B{m[-1]} · {e} epochs" for m, e in zip(table["model"], table["epochs"])])
     ax.set_xlabel("validation accuracy, mean ± SD over seeds (%)")
     _style(ax, f"{len(table)} configurations compared", grid_axis="x")
@@ -89,12 +103,21 @@ def _confusion_panel(ax: Any, report: dict[str, Any]) -> None:
 
     cm = np.asarray(report["confusion_matrix"])
     shares = cm / np.maximum(cm.sum(axis=1, keepdims=True), 1)
-    ax.imshow(shares, cmap=LinearSegmentedColormap.from_list("fv", ["#FFFFFF", MODEL_COLORS["effnetb4"]]),
-              vmin=0, vmax=1)
+    ax.imshow(
+        shares, cmap=LinearSegmentedColormap.from_list("fv", ["#FFFFFF", MODEL_COLORS["effnetb4"]]), vmin=0, vmax=1
+    )
     for i in range(cm.shape[0]):
         for j in range(cm.shape[1]):
-            ax.text(j, i, str(cm[i, j]), ha="center", va="center", fontsize=13,
-                    color="white" if shares[i, j] > 0.5 else INK, fontweight="bold" if i == j else "normal")
+            ax.text(
+                j,
+                i,
+                str(cm[i, j]),
+                ha="center",
+                va="center",
+                fontsize=13,
+                color="white" if shares[i, j] > 0.5 else INK,
+                fontweight="bold" if i == j else "normal",
+            )
     classes = report["classes"]
     ax.set_xticks(range(len(classes)), classes)
     ax.set_yticks(range(len(classes)), classes)
@@ -116,8 +139,15 @@ def _robustness_panel(ax: Any, store: ArtifactStore) -> None:
         part = frame[frame["corruption"] == kind].sort_values("severity")
         if part.empty:
             continue
-        ax.plot([0, *part["severity"]], 100 * np.array([clean, *part["accuracy"]]), marker="o", markersize=4,
-                linewidth=2, color=CORRUPTION_COLORS[kind], label=spec["label"])
+        ax.plot(
+            [0, *part["severity"]],
+            100 * np.array([clean, *part["accuracy"]]),
+            marker="o",
+            markersize=4,
+            linewidth=2,
+            color=CORRUPTION_COLORS[kind],
+            label=spec["label"],
+        )
     ax.set_xticks([0, 1, 2, 3], ["clean", "mild", "medium", "strong"])
     ax.set_ylabel("test accuracy (%)")
     ax.legend(frameon=False, fontsize=8.5, loc="best", handlelength=1.5)
@@ -130,10 +160,12 @@ def _efficiency_panel(ax: Any, store: ArtifactStore) -> None:
         return _missing(ax, title)
     frame = store.read_csv(Files.DATA_EFFICIENCY)
     summary = efficiency_summary(frame)
-    ax.scatter(frame["n_train"], 100 * frame["val_acc"], s=20, color=MODEL_COLORS["effnetb2"], label="one seed",
-               zorder=2)
-    ax.plot(summary["n_train"], 100 * summary["val_acc_mean"], marker="o", color=INK, linewidth=2, label="mean",
-            zorder=3)
+    ax.scatter(
+        frame["n_train"], 100 * frame["val_acc"], s=20, color=MODEL_COLORS["effnetb2"], label="one seed", zorder=2
+    )
+    ax.plot(
+        summary["n_train"], 100 * summary["val_acc_mean"], marker="o", color=INK, linewidth=2, label="mean", zorder=3
+    )
     ax.set_xscale("log")
     ticks = [int(round(v)) for v in summary["n_train"]]
     ax.set_xticks(ticks, [str(v) for v in ticks])
@@ -158,8 +190,14 @@ def summary_figure(store: ArtifactStore) -> Path | None:
 
     fig = Figure(figsize=(40 / 3, 7.5), dpi=150, facecolor="white")  # exactly 2000 x 1125 px (16:9)
     fig.text(0.04, 0.935, "FoodVision Lab", fontsize=27, fontweight="bold", color=INK, family="serif", va="top")
-    fig.text(0.04, 0.855, f"{meta['label']} transfer learning for pizza, steak and sushi photos", fontsize=12.5,
-             color=MUTED, va="top")
+    fig.text(
+        0.04,
+        0.855,
+        f"{meta['label']} transfer learning for pizza, steak and sushi photos",
+        fontsize=12.5,
+        color=MUTED,
+        va="top",
+    )
     low, high = report["accuracy_wilson"]
     tiles = [(f"{100 * report['accuracy']:.1f}%", f"test accuracy\n95% CI {100 * low:.1f} to {100 * high:.1f}%")]
     if ood and ood.get("status") == "ok":
@@ -178,8 +216,14 @@ def summary_figure(store: ArtifactStore) -> Path | None:
     _confusion_panel(fig.add_subplot(grid[0, 1]), report)
     _robustness_panel(fig.add_subplot(grid[0, 2]), store)
     _efficiency_panel(fig.add_subplot(grid[0, 3]), store)
-    fig.text(0.04, 0.035, "Model chosen on validation data over three seeds; the test set was used once. "
-             "Every number is generated by the pipeline.", fontsize=9, color=MUTED)
+    fig.text(
+        0.04,
+        0.035,
+        "Model chosen on validation data over three seeds; the test set was used once. "
+        "Every number is generated by the pipeline.",
+        fontsize=9,
+        color=MUTED,
+    )
 
     _fit_to_page(fig, grid)
     path = store.path(Files.SUMMARY_FIGURE)

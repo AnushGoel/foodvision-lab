@@ -102,7 +102,9 @@ def fit(
         if epoch in wanted:
             snapshots[epoch] = export_delta(model)
         if epoch == 1 or epoch % 5 == 0 or epoch == epochs:
-            scores = " | ".join(f"{s} {history[s]['loss'][-1]:.3f}/{history[s]['acc'][-1]:.1%}" for s in ("train", *eval_splits))
+            scores = " | ".join(
+                f"{s} {history[s]['loss'][-1]:.3f}/{history[s]['acc'][-1]:.1%}" for s in ("train", *eval_splits)
+            )
             LOG.info("%s epoch %2d/%d | %s", label, epoch, epochs, scores)
     if writer is not None:
         writer.close()

@@ -35,7 +35,12 @@ def _describe(values: Sequence[float]) -> dict[str, float]:
     arr = np.asarray(values, dtype=float)
     if arr.size == 0:
         return {}
-    return {"min": float(arr.min()), "median": float(np.median(arr)), "max": float(arr.max()), "mean": float(arr.mean())}
+    return {
+        "min": float(arr.min()),
+        "median": float(np.median(arr)),
+        "max": float(arr.max()),
+        "mean": float(arr.mean()),
+    }
 
 
 def scan_images(root: str | Path, splits: Sequence[str] = ("train", "test")) -> pd.DataFrame:

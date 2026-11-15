@@ -55,8 +55,16 @@ DEPENDS = {"analysis": "research"}  # re-run a stage when its input stage ran in
 OUTPUTS = {
     "audit": (Files.AUDIT, Files.IMAGES, Files.ARCHITECTURE),
     "assignment": (Files.ASSIGNMENT_SUMMARY, Files.ASSIGNMENT_HISTORY),
-    "research": (Files.VALIDATION, Files.SELECTION, Files.TEST_REPORT, Files.PREDICTIONS, Files.CALIBRATION,
-                 Files.OOD, Files.MODEL, Files.MODEL_META),
+    "research": (
+        Files.VALIDATION,
+        Files.SELECTION,
+        Files.TEST_REPORT,
+        Files.PREDICTIONS,
+        Files.CALIBRATION,
+        Files.OOD,
+        Files.MODEL,
+        Files.MODEL_META,
+    ),
     "analysis": (Files.ROBUSTNESS, Files.FEATURE_MAP, Files.DATA_EFFICIENCY, Files.ANALYSIS),
     "benchmark": (Files.BENCHMARK,),
 }
@@ -128,10 +136,15 @@ def _research(cfg: Config, bundle: DataBundle, store: ArtifactStore, device: tor
             "test_ece_uncalibrated": result.calibration["uncalibrated"]["ece"],
             "test_ece_scaled": result.calibration["temperature_scaled"]["ece"],
         },
-        "transforms": {"resize": tf.resize_size[0], "crop": tf.crop_size[0], "interpolation": str(tf.interpolation.value)},
+        "transforms": {
+            "resize": tf.resize_size[0],
+            "crop": tf.crop_size[0],
+            "interpolation": str(tf.interpolation.value),
+        },
         # the not-food check travels with the model, so the app applies exactly the validated threshold
         "ood": {key: result.ood[key] for key in ("score", "threshold", "temperature", "target_tpr")}
-        if result.ood.get("status") == "ok" else None,
+        if result.ood.get("status") == "ok"
+        else None,
         "environment": environment(),
         "config_fingerprint": cfg.fingerprint(*SECTIONS["research"]),
         "created_at": _now(),
@@ -148,17 +161,21 @@ def _analysis(cfg: Config, bundle: DataBundle, store: ArtifactStore, device: tor
     model, payload = load_checkpoint(store.path(Files.MODEL), device=device)
     name, meta = payload["arch"], payload["meta"]
     temperature = float(meta.get("temperature", 1.0))
-    robustness = robustness_eval(model, name, bundle.test, temperature, meta.get("ood"), device, cfg.seed,
-                                 cfg.train.batch_size)
+    robustness = robustness_eval(
+        model, name, bundle.test, temperature, meta.get("ood"), device, cfg.seed, cfg.train.batch_size
+    )
     store.write_csv(Files.ROBUSTNESS, robustness)
     clean = float(robustness.loc[robustness["corruption"] == "none", "accuracy"].iloc[0])
     reported = float(store.read_json(Files.TEST_REPORT)["accuracy"])
     match = abs(clean - reported) <= 1.0 / len(bundle.test) + 1e-9  # allows one image of GPU non-determinism
     if match:
-        LOG.info("Checkpoint check passed: the reloaded model scores %.1f%% (reported %.1f%%)", 100 * clean, 100 * reported)
+        LOG.info(
+            "Checkpoint check passed: the reloaded model scores %.1f%% (reported %.1f%%)", 100 * clean, 100 * reported
+        )
     else:
-        LOG.warning("Checkpoint check FAILED: the reloaded model scores %.1f%%, reported %.1f%%", 100 * clean,
-                    100 * reported)
+        LOG.warning(
+            "Checkpoint check FAILED: the reloaded model scores %.1f%%, reported %.1f%%", 100 * clean, 100 * reported
+        )
     store.write_csv(Files.FEATURE_MAP, feature_map(cfg, model, name, bundle, temperature, meta.get("ood"), device))
     selection = store.read_json(Files.SELECTION)
     efficiency = data_efficiency(cfg, bundle, selection, store.read_csv(Files.VALIDATION), device)
@@ -168,13 +185,17 @@ def _analysis(cfg: Config, bundle: DataBundle, store: ArtifactStore, device: tor
         {
             "checkpoint_check": {"reloaded_clean_accuracy": clean, "reported_test_accuracy": reported, "match": match},
             "robustness": {
-                "corruptions": {k: {"label": v["label"], "levels": list(v["levels"]), "unit": v["unit"]}
-                                for k, v in CORRUPTIONS.items()},
+                "corruptions": {
+                    k: {"label": v["label"], "levels": list(v["levels"]), "unit": v["unit"]}
+                    for k, v in CORRUPTIONS.items()
+                },
                 "note": "Exploratory: corrupted copies of the test photos at the model's input size; no decision was "
                 "made from these results.",
             },
-            "feature_map": {"method": "L2-normalised pooled features, PCA to at most 50 dimensions, then t-SNE",
-                            "perplexity": cfg.analysis.perplexity},
+            "feature_map": {
+                "method": "L2-normalised pooled features, PCA to at most 50 dimensions, then t-SNE",
+                "perplexity": cfg.analysis.perplexity,
+            },
             "data_efficiency": {
                 "model": name,
                 "epochs": int(selection["epochs"]),
@@ -188,8 +209,13 @@ def _analysis(cfg: Config, bundle: DataBundle, store: ArtifactStore, device: tor
 def _write_manifest(store: ArtifactStore, manifest: dict[str, Any], cfg: Config) -> None:
     files = []
     for path in sorted(p for p in store.root.rglob("*") if p.is_file() and p.name != Files.MANIFEST):
-        files.append({"file": str(path.relative_to(store.root)), "bytes": path.stat().st_size,
-                      "sha256": hashlib.sha256(path.read_bytes()).hexdigest()[:16]})
+        files.append(
+            {
+                "file": str(path.relative_to(store.root)),
+                "bytes": path.stat().st_size,
+                "sha256": hashlib.sha256(path.read_bytes()).hexdigest()[:16],
+            }
+        )
     manifest.update(
         schema_version=SCHEMA_VERSION, updated_at=_now(), environment=environment(), config=cfg.to_dict(), files=files
     )
@@ -204,8 +230,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--force", action="store_true", help="re-run stages even when cached outputs match")
     args = parser.parse_args(argv)
     # force=True: notebooks often pre-configure logging, which would otherwise hide all progress output
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S",
-                        stream=sys.stdout, force=True)
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s %(message)s", datefmt="%H:%M:%S", stream=sys.stdout, force=True
+    )
 
     cfg = load_config(args.config)
     stages = [s.strip() for s in args.stages.split(",") if s.strip()]

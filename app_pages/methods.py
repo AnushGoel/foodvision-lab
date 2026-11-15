@@ -7,8 +7,10 @@ from foodvision import ui
 from foodvision.artifacts import Files
 from foodvision.viz import class_counts, size_scatter
 
-ui.page("Data and methods", "What the data contains, how the three networks differ, and how each number in this "
-        "app was produced.")
+ui.page(
+    "Data and methods",
+    "What the data contains, how the three networks differ, and how each number in this " "app was produced.",
+)
 tab_data, tab_models, tab_protocol, tab_card = st.tabs(
     ["Dataset audit", "Architectures", "Protocol and statistics", "Model card"]
 )
@@ -34,9 +36,11 @@ with tab_data:
         )
         if audit["duplicate_pairs"]:
             st.dataframe(pd.DataFrame(audit["duplicate_pairs"]), hide_index=True)
-        ui.note("Source: the 20% pizza, steak and sushi subset of Food-101 (Bossard et al., 2014) distributed with the "
-                "Zero to Mastery PyTorch course. Food-101 images come from Foodspotting and remain the property of their "
-                "owners; see docs/DATASET_CARD.md.")
+        ui.note(
+            "Source: the 20% pizza, steak and sushi subset of Food-101 (Bossard et al., 2014) distributed with the "
+            "Zero to Mastery PyTorch course. Food-101 images come from Foodspotting and remain the property of their "
+            "owners; see docs/DATASET_CARD.md."
+        )
 
 with tab_models:
     if not ui.missing_notice(Files.ARCHITECTURE):
@@ -64,8 +68,10 @@ with tab_models:
         )
         choice = st.selectbox("Stage-by-stage structure", [a["label"] for a in arch])
         stages = next(a for a in arch if a["label"] == choice)["stages"]
-        st.dataframe(pd.DataFrame(stages).assign(output=lambda d: d["output"].map(lambda s: " x ".join(map(str, s)))),
-                     hide_index=True)
+        st.dataframe(
+            pd.DataFrame(stages).assign(output=lambda d: d["output"].map(lambda s: " x ".join(map(str, s)))),
+            hide_index=True,
+        )
 
 with tab_protocol:
     st.markdown(
@@ -99,7 +105,11 @@ every epoch because the preprocessing is deterministic.
     if ui.available(Files.MANIFEST):
         manifest = ui.read_json(Files.MANIFEST)
         env = manifest.get("environment", {})
-        ui.note("Produced with " + ", ".join(f"{k} {v}" for k, v in env.items() if v) + f". Last update {manifest.get('updated_at')}.")
+        ui.note(
+            "Produced with "
+            + ", ".join(f"{k} {v}" for k, v in env.items() if v)
+            + f". Last update {manifest.get('updated_at')}."
+        )
 
 with tab_card:
     if not ui.missing_notice(Files.MODEL_CARD):

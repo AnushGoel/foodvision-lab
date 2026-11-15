@@ -108,7 +108,10 @@ def test_evaluate_selects_on_validation_and_reports_test_once():
     assert {r["n"] for r in report["per_source"]} == {60, 40}
     for key in ("accepted_food", "rejected_non_food"):
         assert 0.0 <= report["test"][key] <= 1.0
-    table = score_table({"test_food": test_food, "test_non_food": test_ood},
-                        {"test_food": ["foodvision"] * 150, "test_non_food": sources}, 1.3)
+    table = score_table(
+        {"test_food": test_food, "test_non_food": test_ood},
+        {"test_food": ["foodvision"] * 150, "test_non_food": sources},
+        1.3,
+    )
     assert set(table["group"]) == {"food", "non-food"} and set(SCORES) <= set(table.columns)
     assert len(table) == 250

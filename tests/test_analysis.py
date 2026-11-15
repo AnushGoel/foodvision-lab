@@ -76,8 +76,8 @@ def test_feature_map_projection_separates_clusters():
     features = np.concatenate([c + rng.normal(0, 0.3, (30, 64)) for c in centres])
     xy = project_2d(features, seed=0)
     assert xy.shape == (90, 2) and np.isfinite(xy).all()
-    means = np.array([xy[i * 30:(i + 1) * 30].mean(axis=0) for i in range(3)])
-    spread = max(xy[i * 30:(i + 1) * 30].std(axis=0).max() for i in range(3))
+    means = np.array([xy[i * 30 : (i + 1) * 30].mean(axis=0) for i in range(3)])
+    spread = max(xy[i * 30 : (i + 1) * 30].std(axis=0).max() for i in range(3))
     assert min(np.linalg.norm(means[i] - means[j]) for i in range(3) for j in range(i + 1, 3)) > 2 * spread
     with pytest.raises(ValueError):
         project_2d(features[:4])
@@ -86,8 +86,9 @@ def test_feature_map_projection_separates_clusters():
 def test_efficiency_summary_averages_seeds():
     import pandas as pd
 
-    frame = pd.DataFrame({"fraction": [0.1, 0.1, 1.0], "n_train": [36, 36, 360], "seed": [1, 2, 1],
-                          "val_acc": [0.8, 0.9, 0.95]})
+    frame = pd.DataFrame(
+        {"fraction": [0.1, 0.1, 1.0], "n_train": [36, 36, 360], "seed": [1, 2, 1], "val_acc": [0.8, 0.9, 0.95]}
+    )
     summary = efficiency_summary(frame)
     assert summary["val_acc_mean"].tolist() == pytest.approx([0.85, 0.95]) and summary["runs"].tolist() == [2, 1]
 

@@ -59,8 +59,15 @@ def test_ood_settings_are_validated(tmp_path, block, message):
         load_config(path)
 
 
-@pytest.mark.parametrize("block", ["analysis:\n  fractions: []\n", "analysis:\n  fractions: [0.0, 1.0]\n",
-                                   "analysis:\n  fractions: [1.5]\n", "analysis:\n  perplexity: 1\n"])
+@pytest.mark.parametrize(
+    "block",
+    [
+        "analysis:\n  fractions: []\n",
+        "analysis:\n  fractions: [0.0, 1.0]\n",
+        "analysis:\n  fractions: [1.5]\n",
+        "analysis:\n  perplexity: 1\n",
+    ],
+)
 def test_analysis_settings_are_validated(tmp_path, block):
     path = tmp_path / "analysis.yaml"
     path.write_text(block)

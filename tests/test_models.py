@@ -15,7 +15,9 @@ from foodvision.models import (  # noqa: E402
 CLASSES = ["pizza", "steak", "sushi"]
 
 
-@pytest.mark.parametrize(("name", "crop", "features"), [("effnetb2", 288, 1408), ("effnetb3", 300, 1536), ("effnetb4", 380, 1792)])
+@pytest.mark.parametrize(
+    ("name", "crop", "features"), [("effnetb2", 288, 1408), ("effnetb3", 300, 1536), ("effnetb4", 380, 1792)]
+)
 def test_new_head_frozen_backbone_and_output_shape(name, crop, features):
     model = build_model(name, 3, pretrained=False).eval()
     assert get_transforms(name).crop_size[0] == crop

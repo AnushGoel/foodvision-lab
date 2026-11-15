@@ -69,7 +69,11 @@ def expected_calibration_error(probs: np.ndarray, labels: np.ndarray, n_bins: in
     """ECE = sum over bins of (bin share) x |accuracy - mean confidence|."""
     n = len(labels)
     return float(
-        sum(b["count"] / n * abs(b["accuracy"] - b["confidence"]) for b in reliability_bins(probs, labels, n_bins) if b["count"])
+        sum(
+            b["count"] / n * abs(b["accuracy"] - b["confidence"])
+            for b in reliability_bins(probs, labels, n_bins)
+            if b["count"]
+        )
     )
 
 
@@ -80,7 +84,9 @@ def brier_score(probs: np.ndarray, labels: np.ndarray) -> float:
     return float(((probs - onehot) ** 2).sum(axis=1).mean())
 
 
-def abstention_curve(probs: np.ndarray, labels: np.ndarray, thresholds: np.ndarray | None = None) -> list[dict[str, float]]:
+def abstention_curve(
+    probs: np.ndarray, labels: np.ndarray, thresholds: np.ndarray | None = None
+) -> list[dict[str, float]]:
     """Coverage and selective accuracy when predictions below a confidence threshold are withheld."""
     probs = np.asarray(probs, dtype=float)
     labels = np.asarray(labels, dtype=int)

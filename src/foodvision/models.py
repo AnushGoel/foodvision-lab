@@ -111,7 +111,9 @@ def save_checkpoint(
     return {"path": str(path), "bytes": path.stat().st_size, "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
 
 
-def load_checkpoint(path: str | Path, pretrained: bool = True, device: str | torch.device = "cpu") -> tuple[nn.Module, dict[str, Any]]:
+def load_checkpoint(
+    path: str | Path, pretrained: bool = True, device: str | torch.device = "cpu"
+) -> tuple[nn.Module, dict[str, Any]]:
     """Rebuild the trained model from pinned ImageNet weights plus the stored delta (eval mode)."""
     payload = torch.load(path, map_location="cpu", weights_only=True)
     if payload.get("format") != CHECKPOINT_FORMAT:
