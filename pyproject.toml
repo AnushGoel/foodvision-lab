@@ -64,6 +64,6 @@ files = [
   "src/foodvision/reports.py",
   "src/foodvision/ood.py",
 ]  # the typed core; CI runs plain `mypy`
-ignore_missing_imports = true
+follow_imports = "silent"
 warn_unused_ignores = true
 check_untyped_defs = true
