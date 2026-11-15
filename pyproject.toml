@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,7 +8,8 @@ version = "1.0.0"
 description = "Explainable transfer learning for food image classification: EfficientNet benchmarking, statistics, calibration, Grad-CAM and a Streamlit app."
 readme = "README.md"
 requires-python = ">=3.10"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "Anush Goel" }]
 dependencies = [
   "numpy>=1.24",
@@ -64,6 +65,11 @@ files = [
   "src/foodvision/reports.py",
   "src/foodvision/ood.py",
 ]  # the typed core; CI runs plain `mypy`
-follow_imports = "silent"
+ignore_missing_imports = true
+follow_imports = "silent"   # check the listed modules; use, but do not report on, what they import
 warn_unused_ignores = true
 check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["pandas", "pandas.*"]
+ignore_missing_imports = true   # pandas ships no type hints, and mypy only honours this setting per package for it
